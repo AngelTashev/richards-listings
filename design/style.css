@@ -243,6 +243,53 @@ main {
     font-weight: 500;
 }
 
+.login-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 0px 250px 0px;
+}
+
+.login-form-container {
+    display: flex;
+    max-width: 600px;
+    margin-top: 10px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-label {
+    align-self: flex-start;
+    margin-bottom: 2px;
+    font-size: 20px;
+}
+
+.login-text-input {
+    width: 250px;
+    height: 40px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 30px;
+    outline: none;
+}
+
+.login-button {
+    margin-top: 10px;
+    width: 170px;
+    height: 50px;
+    border-radius: 30px;
+    border: 2px solid #000;
+    background: #FFBC42;
+    outline: none;
+    font-size: 20px;
+    font-weight: 500;
+    box-shadow: 0px 0px 6px -2px #000000;
+}
+
 
 /* Color scheme 
  #D68FD6 - Plum Web

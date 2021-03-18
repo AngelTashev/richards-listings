@@ -3,6 +3,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import logo from './images/richards-logo.png';
 import AnnonymousLanding from './components/AnnonymounsLanding';
+import Register from './components/Register';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -22,7 +24,7 @@ function App() {
         </a>
       </header> */}
       <Header logo={logo}></Header>
-      <AnnonymousLanding></AnnonymousLanding>
+      <Login></Login>
       <Footer></Footer>
     </div>
   );

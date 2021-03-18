@@ -53,21 +53,30 @@
 
     </header>
 
-    <main>
-        <article class="main-welcome-img-wrapper">
-            <img class="main-welcome-img" src="https://thumbs.dreamstime.com/b/happy-people-shaking-hands-city-street-business-partnership-gesture-cooperation-concept-98639208.jpg" alt="">
-        </article>
-        <section class="main-welcome-container">
-            <article class="welcome-title-container">
-                <h1 class="welcome-title">Welcome to Richard's Listings</h1>
-                <p class="welcome-subtitle">The best online listings store</p>
-            </article>
-            <article class="log-ops-article">
-                <p>Start by</p>
-                <button class="log-ops-btn"><a href="">Sign Up</a></button>
-                <p>or</p>
-                <button class="log-ops-btn"><a href="">Login</a></button>
-            </article>
+    <main class="login-main">
+        <h1>Register</h1>
+        <section class="login-form-container">
+            <form class="login-form" action="">
+                <label class="login-label" for="first-name-input">First Name</label>
+                <input required placeholder="First Name" type="text" name="first-name-input" id="first-name-input" class="login-text-input">
+                
+                <label class="login-label" for="last-name-input">Last Name</label>
+                <input required placeholder="Last Name" type="text" name="last-name-input" id="last-name-input" class="login-text-input">
+                
+                <label class="login-label" for="username-input">Username</label>
+                <input required placeholder="Username" type="text" name="username-input" id="username-input" class="login-text-input">
+                
+                <label class="login-label" for="email-input">Password</label>
+                <input required placeholder="user@example.com" type="email" name="email-input" id="email-input" class="login-text-input">
+                
+                <label class="login-label" for="password-input">Password</label>
+                <input required placeholder="Password" type="password" name="password-input" id="password-input" class="login-text-input">
+                
+                <label class="login-label" for="repeat-password-input">Repeat Password</label>
+                <input required placeholder="Repeat Password" type="password" name="repeat-password-input" id="repeat-password-input" class="login-text-input">
+
+                <button type="submit" class="login-button" id="login-button">Let's go!</button>
+            </form>
         </section>
     </main>
 
