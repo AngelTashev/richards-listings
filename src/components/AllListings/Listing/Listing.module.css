@@ -1,0 +1,47 @@
+.listing {
+    border: 2px solid #4A1942;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 320px;
+    margin: 50px 30px;
+}
+
+.listingImageContainer {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.listingImage {
+    vertical-align: middle;
+    width: 100%;
+
+}
+
+.listingInfo {
+    box-shadow: 0px -5px 4px 1px rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+    background: #D68FD6;
+    margin: 0;
+}
+
+.listingTitle {
+    margin: 0;
+}
+
+.listingMore {
+    outline: none;
+    background: #4A1942;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.listingMore a {
+    color: #fff;
+    text-decoration: none;
+}

@@ -1,4 +1,4 @@
-function AnnonymousLanding() {
+function AnonymousLanding() {
     return (
         <main>
             <article className="main-welcome-img-wrapper">
@@ -20,4 +20,4 @@ function AnnonymousLanding() {
     );
 }
 
-export default AnnonymousLanding;
+export default AnonymousLanding;

@@ -248,6 +248,7 @@ main {
     flex-direction: column;
     align-items: center;
     margin: 50px 0px 250px 0px;
+    max-width: 1200px;
 }
 
 .login-form-container {
@@ -288,6 +289,149 @@ main {
     font-size: 20px;
     font-weight: 500;
     box-shadow: 0px 0px 6px -2px #000000;
+}
+
+.user-details-main {
+    display: flex;
+    max-width: 1200px;
+    margin: auto;
+    padding-top: 100px;
+}
+
+.user-picture-name-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.user-details-section {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 50%;
+}
+
+.user-details-picture-container {
+    max-width: 200px;
+    border: 4px solid #4A1942;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.user-details-picture {
+    width: 100%;
+    vertical-align: middle;
+}
+
+.user-name-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-name-fullname {
+    margin: 20px 0px 0px 0px;
+}
+
+.user-name-username {
+    margin: 7px 0px 0px 0px;
+    color: #777;
+}
+
+.user-details-listings-container {
+    display: flex;
+    align-items: center;
+}
+
+.user-details-listings-container h1 {
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.user-details-listings-container button {
+    border: 2px solid #000;
+    border-radius: 15px;
+    background: #893168;
+    width: 100px;
+    height: 60px;
+    outline: none;
+}
+
+.user-details-listings-container button a {
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+
+
+
+.all-listings-main {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.all-listings-title {
+    font-size: 32px;
+}
+
+.all-listings-section {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 150px;
+    justify-content: flex-start;
+}
+
+.listing {
+    border: 2px solid #4A1942;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 320px;
+    margin: 50px 30px;
+}
+
+.listing-image-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.listing-image {
+    vertical-align: middle;
+    width: 100%;
+
+}
+
+.listing-info {
+    box-shadow: 0px -5px 4px 1px rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+    background: #D68FD6;
+    margin: 0;
+}
+
+.listing-title {
+    margin: 0;
+}
+
+.listing-more {
+    outline: none;
+    background: #4A1942;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.listing-more a {
+    color: #fff;
+    text-decoration: none;
 }
 
 

@@ -2,9 +2,11 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import logo from './images/richards-logo.png';
-import AnnonymousLanding from './components/AnnonymounsLanding';
+import AnonymousLanding from './components/AnonymousLanding';
 import Register from './components/Register';
 import Login from './components/Login';
+import UserDetails from './components/UserDetails';
+import AllListings from './components/AllListings';
 
 function App() {
   return (
@@ -24,7 +26,7 @@ function App() {
         </a>
       </header> */}
       <Header logo={logo}></Header>
-      <Login></Login>
+      <AllListings/>
       <Footer></Footer>
     </div>
   );
