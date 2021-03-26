@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom';
+
+
 function Header(props) {
     return (
         <header className="sticky">
@@ -14,10 +17,10 @@ function Header(props) {
                     <nav className="header-nav">
                         <ul>
                             <li className="header-nav-item">
-                                <a href="">Home</a>
+                                <Link to="/">Home</Link>
                             </li>
                             <li className="header-nav-item">
-                                <a href="">About us</a>
+                                <Link to="/about-us">About us</Link>
                             </li>
                         </ul>
                     </nav>
@@ -27,10 +30,10 @@ function Header(props) {
                     <nav className="header-nav">
                         <ul>
                             <li className="header-nav-item">
-                                <a href="">Login</a>
+                                <Link to="/login">Login</Link>
                             </li>
                             <li className="header-nav-item">
-                                <a href="">Sign up</a>
+                                <Link to="/register">Sign up</Link>
                             </li>
                         </ul>
                     </nav>

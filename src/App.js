@@ -1,3 +1,5 @@
+import { Switch, Route } from 'react-router-dom';
+
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -11,6 +13,17 @@ import AllListings from './components/AllListings';
 function App() {
   return (
     <div className="App">
+
+      <Header logo={logo}></Header>
+
+      <Switch>
+        <Route path="/" component={AllListings} exact/>
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+      </Switch>
+
+      <Footer></Footer>
+
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -25,9 +38,6 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <Header logo={logo}></Header>
-      <AllListings/>
-      <Footer></Footer>
     </div>
   );
 }
