@@ -5,10 +5,12 @@ import * as listingService from '../../services/listingService';
 
 import Listing from './Listing';
 
-const AllListings = () => {
+const AllListings = ({
+    match
+}) => {
 
     let [listings, setListings] = useState([{}]);
-    console.log(listings);
+    console.log(match.params.category); // TODO add show by category
 
     useEffect(() => {
         listingService.getAll()
@@ -25,7 +27,8 @@ const AllListings = () => {
 
         {Object.keys(listings[0])
             .map(x => <Listing 
-                        key={x} 
+                        key={x}
+                        id={x}
                         title={listings[0][x].title} 
                         imageUrl={listings[0][x].imageUrl}
                     />)}

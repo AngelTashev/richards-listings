@@ -20,9 +20,10 @@ function App() {
 
       <Switch>
         <Route path="/" component={AllListings} exact/>
+        <Route path="/:category" component={AllListings} exact/>
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-        <Route path="/listings/0" component={ListingDetails} />
+        <Route path="/listings/:id" component={ListingDetails} />
       </Switch>
 
       <Footer></Footer>

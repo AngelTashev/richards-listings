@@ -1,4 +1,4 @@
-const baseUrl = 'https://richards-listings-default-rtdb.firebaseio.com/.json'
+const baseUrl = 'https://richards-listings-default-rtdb.firebaseio.com/listings.json'
 
 export const getAll = (category = '') => {
     // TODO implement category filtering

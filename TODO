@@ -19,7 +19,12 @@ user listings page
 about us page
 
 listingService +
+getAll +
+getOne
 
 errorHandling
 
 fix firebase rules
+
+add show listings by category
+show username in listing details by userId
