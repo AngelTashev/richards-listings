@@ -11,7 +11,9 @@ class ListingDetails extends Component {
     }
 
     componentDidMount() {
-        this.state.listing = (listingService.getOne(this.state.match.params.id));
+        listingService.getOne(this.state.match.params.id)
+            .then(res => this.setState({listing: res}))
+
     }
 
     render() {
@@ -47,7 +49,7 @@ class ListingDetails extends Component {
                         <article className="listing-details-user-container">
                             <div>
                                 <p>Listing by: </p>
-                                <h3 className="listing-details-username">{listing.userId}</h3> // TODO view username by userId
+                                <h3 className="listing-details-username">{listing.userId}</h3> {/* TODO view username by userId */}
                             </div>
                             <button className="listing-details-button"><a href="">View User Listings</a></button>
                         </article>

@@ -1,12 +1,14 @@
-const baseUrl = 'https://richards-listings-default-rtdb.firebaseio.com/listings.json'
+const baseUrl = 'https://richards-listings-default-rtdb.firebaseio.com/listings/'
 
 export const getAll = (category = '') => {
     // TODO implement category filtering
-    return fetch(baseUrl)
+    return fetch(baseUrl + '.json')
         .then(res => res.json())
         .catch(err => alert(err)); // TODO - error hadling
 }
 
 export const getOne = (id) => {
-    alert('Implement getOne!'); // TODO
+    return fetch(baseUrl + id + '.json')
+        .then(res => res.json())
+        .catch(alert); // TODO - error hadling
 }
