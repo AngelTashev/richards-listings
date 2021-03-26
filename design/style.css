@@ -435,6 +435,90 @@ main {
 }
 
 
+
+.listing-details-main {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 50px;
+    margin-bottom: 200px;
+}
+
+.listing-details-container {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.listing-details-image-title-container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 40%;
+}
+
+.listing-details-image-wrapper {
+    max-width: 400px;
+    border: 2px solid #000;
+}
+
+.listing-details-image-wrapper img {
+    width: 100%;
+    vertical-align: middle;
+}
+
+.listing-details-title-container {
+    display: flex;
+    align-content: center;
+}
+
+.listing-details-title-container h3 {
+    margin: auto;
+}
+
+.listing-details-title {
+    font-size: 26px;
+}
+
+.listing-details-info-container {
+    width: 50%;
+    margin: 0px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.listing-details-price-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.listing-details-price-container span {
+    font-weight: 300;
+}
+
+.listing-details-user-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.listing-details-button {
+    border: 2px solid #000;
+    border-radius: 30px;
+    background: #D68FD6;
+    padding: 10px 20px;
+    font-size: 16px;
+    outline: none;
+}
+
+.listing-details-button a {
+    font-size: 16px;
+    text-decoration: none;
+    color: #000;
+}
+
+
 /* Color scheme 
  #D68FD6 - Plum Web
  #893168 - Amaranth M P

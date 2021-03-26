@@ -23,7 +23,12 @@ const AllListings = () => {
     </article>
     <section className={style.allListingsSection}>
 
-        {Object.keys(listings[0]).map(x => <Listing key={x} title={listings[0][x].title} imageUrl={listings[0][x].imageUrl}/>)}
+        {Object.keys(listings[0])
+            .map(x => <Listing 
+                        key={x} 
+                        title={listings[0][x].title} 
+                        imageUrl={listings[0][x].imageUrl}
+                    />)}
 
         <Listing title="BMW 330d turbo" imageUrl="https://www.turbodynamics.co.uk/shop/images/MDX537.png"/>
 

@@ -9,6 +9,8 @@ import Register from './components/Register';
 import Login from './components/Login';
 import UserDetails from './components/UserDetails';
 import AllListings from './components/AllListings';
+import ListingDetails from './components/ListingDetails';
+import Listing from './components/AllListings/Listing';
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
         <Route path="/" component={AllListings} exact/>
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/listings/0" component={ListingDetails} />
       </Switch>
 
       <Footer></Footer>

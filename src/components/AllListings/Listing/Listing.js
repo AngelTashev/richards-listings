@@ -1,5 +1,7 @@
 import style from './Listing.module.css';
 
+import { Link } from 'react-router-dom';
+
 const Listing = ({title, imageUrl}) => {
 
     console.log(title);
@@ -10,7 +12,7 @@ const Listing = ({title, imageUrl}) => {
             </article>
             <article className={style.listingInfo}>
                 <h1 className={style.listingTitle}>{title}</h1>
-                <button className={style.listingMore}><a href="">See More</a></button>
+                <button className={style.listingMore}><Link to="/listings/0">See More</Link></button>
             </article>
         </section>
     );
