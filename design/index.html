@@ -53,43 +53,27 @@
 
     </header>
 
-    <main class="listing-details-main">
-        <section class="listing-details-container">
-            <section class="listing-details-image-title-container">
-                <article class="listing-details-image-wrapper">
-                    <img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MWP22?wid=2000&hei=2000&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1591634795000"
-                        alt="" />
-                </article>
-                <article class="listing-details-title-container">
-                    <h1 class="listing-details-title">Apple Airpods Pro</h1>
-                    <h3>Likes: 3</h3>
-                </article>
-            </section>
-            <section class="listing-details-info-container">
-                <article class="listing-details-description-container">
-                    <p>
-                        Incredibly light noise-cancelling headphones, AirPods Pro block out your environment so you can
-                        focus on what you’re listening to. AirPods Pro use two microphones, an outward-facing microphone
-                        and an inward-facing microphone, to create superior noise cancellation. By continuously adapting
-                        to the geometry of your ear and the fit of the ear tips, Active Noise Cancellation silences the
-                        world to keep you fully tuned in to your music, podcasts, and calls.
-                    </p>
-                </article>
-                <article class="listing-details-price-container">
-                    <h3>Price: <span>$100</span></h3>
-                    <button class="listing-details-button"><a href="">
-                        <i class="fas fa-heart"></i>    
-                        Like
-                    </a></button>
-                </article>
-                <article class="listing-details-user-container">
-                    <div>
-                        <p>Listing by: </p>
-                        <h3 class="listing-details-username">Vancho</h3>
-                    </div>
-                    <button class="listing-details-button"><a href="">View User Listings</a></button>
-                </article>
-            </section>
+    <main class="listing-form-main">
+        <h1>Add Listing</h1>
+        <section class="listing-form-container">
+            <form class="listing-form" action="">
+
+                <label class="listing-form-label" for="title-input">Title</label>
+                <input required placeholder="Title of your listing" type="text" name="title-input" id="title-input" class="listing-form-text-input" />
+
+                <label class="listing-form-label" for="description-input">Description</label>
+                <textarea required placeholder="Give your listing a good description!" type="textarea" name="description-input" id="description-input" class="listing-form-textarea" min-length="20" max-length="400" required></textarea>
+                
+                <label class="listing-form-label" for="price-input">Price</label>
+                <input required value="100" type="number" min="0" max="99999" name="price-input" id="price-input" class="listing-form-text-input" />
+
+                <label class="listing-form-label" for="image-input">Choose an image...</label>
+                <input required type="file" name="image-input" id="image-input" class="listing-form-file"></input>
+
+
+                <button type="submit" class="listing-form-button" id="add-listing-button">Add!</button>
+
+            </form>
         </section>
     </main>
 

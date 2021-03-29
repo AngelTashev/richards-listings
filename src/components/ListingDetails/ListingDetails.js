@@ -41,7 +41,7 @@ class ListingDetails extends Component {
                             <h3>Price: <span>${listing.price}</span></h3>
                             <button className="listing-details-button">
                                 <a href="">
-                                    <i className="fas fa-heart"></i>
+                                    <i className="fas fa-heart details-like-heart"></i>
                                     Like
                                 </a>
                             </button>

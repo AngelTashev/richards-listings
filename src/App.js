@@ -10,7 +10,9 @@ import Login from './components/Login';
 import UserDetails from './components/UserDetails';
 import AllListings from './components/AllListings';
 import ListingDetails from './components/ListingDetails';
-import Listing from './components/AllListings/Listing';
+import AddListing from './components/AddListing';
+
+let isUserLogged = true;
 
 function App() {
   return (
@@ -19,11 +21,17 @@ function App() {
       <Header logo={logo}></Header>
 
       <Switch>
-        <Route path="/" component={AllListings} exact/>
-        <Route path="/:category" component={AllListings} exact/>
+        {isUserLogged &&
+          <Route path="/" component={AllListings} exact />
+        }
+        {!isUserLogged &&
+          <Route path="/" component={AnonymousLanding} exact />
+        }
+        <Route path="/listings/:category" component={AllListings} exact />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/listings/:id" component={ListingDetails} />
+        <Route path="/add-listing" component={AddListing} />
       </Switch>
 
       <Footer></Footer>

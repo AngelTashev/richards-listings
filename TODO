@@ -14,13 +14,13 @@ edit user page
 add listing page
 edit listing
 all listings page +
-listing details page +
+listing details page ++
 user listings page
 about us page
 
 listingService +
 getAll +
-getOne
+getOne ++
 
 errorHandling
 
@@ -28,3 +28,9 @@ fix firebase rules
 
 add show listings by category
 show username in listing details by userId
+
+make picture to not appear if abscent
+
+show username in header when logged in
+
+fix forms
