@@ -23,7 +23,7 @@ class ListingDetails extends Component {
                 <section className="listing-details-container">
                     <section className="listing-details-image-title-container">
                         <article className="listing-details-image-wrapper">
-                            <img src={listing.imageUrl}
+                            <img src={listing.imageUrl == '' ? 'https://www.allianceplast.com/wp-content/uploads/2017/11/no-image.png' : listing.imageUrl}
                                 alt="" />
                         </article>
                         <article className="listing-details-title-container">

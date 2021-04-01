@@ -1,5 +1,7 @@
 import { Component } from 'react';
 
+import * as listingService from '../../services/listingService';
+
 import ErrorMessage from '../Shared/ErrorMessage';
 
 
@@ -12,16 +14,16 @@ class AddListing extends Component {
             errors: {
                 title: '',
                 description: '',
-                price: 0,
-                image: {},
+                price: '',
             },
+            selectedFile: null,
         };
 
         this.onFormSubmit = this.onFormSubmit.bind(this);
+        this.onFileChangeHandler = this.onFileChangeHandler.bind(this);
     }
 
     validateTitle(title) {
-        console.log(title);
         if (title.length < 5)
             return 'Title should be 5 characters min';
 
@@ -51,6 +53,11 @@ class AddListing extends Component {
         return '';
     }
 
+    onFileChangeHandler(event) {
+        this.setState({selectedFile: event.target.files[0]});
+        console.log(event.target.files);
+    }
+
     onFormSubmit(e) {
         e.preventDefault();
 
@@ -61,11 +68,21 @@ class AddListing extends Component {
                 title: this.validateTitle(title.value),
                 description: this.validateDescription(description.value),
                 price: this.validatePrice(Number(price.value)),
-                image: {},
             },
         });
 
-        console.log(this.state.errors);
+        if (!this.state.errors.title && 
+            !this.state.errors.description && 
+            !this.state.errors.price) {
+
+                listingService.uploadListing({
+                    title: title.value,
+                    description: description.value,
+                    price: price.value,
+                    category: 'other',
+                    image: this.state.selectedFile});
+        }
+
 
         
     }
@@ -90,8 +107,8 @@ class AddListing extends Component {
                         <input required type="number" min="0" max="99999" name="price" id="price" className="listing-form-text-input" />
                         <ErrorMessage>{this.state.errors.price}</ErrorMessage>
 
-                        <label className="listing-form-label" htmlFor="image-input">Choose an image...</label>
-                        <input type="file" name="image-input" id="image-input" className="listing-form-file"></input>
+                        <label className="listing-form-label" htmlFor="image">Choose an image...</label>
+                        <input  onChange={this.onFileChangeHandler} type="file" name="image" id="image" className="listing-form-file"></input>
 
                         <button type="submit" className="listing-form-button" id="add-listing-button">Add!</button>
 

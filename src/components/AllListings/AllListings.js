@@ -30,7 +30,7 @@ const AllListings = ({
                         key={x}
                         id={x}
                         title={listings[0][x].title} 
-                        imageUrl={listings[0][x].imageUrl}
+                        imageUrl={ listings[0][x].imageUrl == '' ? 'https://www.allianceplast.com/wp-content/uploads/2017/11/no-image.png' : listings[0][x].imageUrl}
                     />)}
 
         <Listing title="BMW 330d turbo" imageUrl="https://www.turbodynamics.co.uk/shop/images/MDX537.png"/>
