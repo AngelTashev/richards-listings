@@ -27,10 +27,10 @@ function App() {
         {!isUserLogged &&
           <Route path="/" component={AnonymousLanding} exact />
         }
-        <Route path="/listings/:category" component={AllListings} exact />
+        {/* <Route path="/listings/:category" component={AllListings} exact /> */}
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-        <Route path="/listings/:id" component={ListingDetails} />
+        <Route path="/listings/:id" component={ListingDetails} exact/>
         <Route path="/add-listing" component={AddListing} />
       </Switch>
 

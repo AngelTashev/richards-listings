@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function AnonymousLanding() {
     return (
         <main>
@@ -11,9 +13,9 @@ function AnonymousLanding() {
                 </article>
                 <article className="log-ops-article">
                     <p>Start by</p>
-                    <button className="log-ops-btn"><a href="">Sign Up</a></button>
+                    <button className="log-ops-btn"><Link to="/register">Sign Up</Link></button>
                     <p>or</p>
-                    <button className="log-ops-btn"><a href="">Login</a></button>
+                    <button className="log-ops-btn"><Link to="/login">Login</Link></button>
                 </article>
             </section>
         </main>

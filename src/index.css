@@ -544,6 +544,13 @@ main {
     display: none;
 }
 
+.error-message {
+    color: red;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
 
 /* Color scheme 
  #D68FD6 - Plum Web

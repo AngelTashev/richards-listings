@@ -11,7 +11,7 @@ register page +
 login page +
 user page +
 edit user page
-add listing page
+add listing page +
 edit listing
 all listings page +
 listing details page ++
@@ -34,3 +34,4 @@ make picture to not appear if abscent
 show username in header when logged in
 
 fix forms
+add category options to add listing formq
