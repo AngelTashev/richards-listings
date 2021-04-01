@@ -23,11 +23,11 @@ class ListingDetails extends Component {
                 <section className="listing-details-container">
                     <section className="listing-details-image-title-container">
                         <article className="listing-details-image-wrapper">
-                            <img src={listing.imageUrl == '' ? 'https://www.allianceplast.com/wp-content/uploads/2017/11/no-image.png' : listing.imageUrl}
+                            <img src={listing.imageUrl === '' ? 'https://www.allianceplast.com/wp-content/uploads/2017/11/no-image.png' : listing.imageUrl}
                                 alt="" />
                         </article>
                         <article className="listing-details-title-container">
-                            <h1 className="listing-details-title">Apple Airpods Pro</h1>
+                            <h1 className="listing-details-title">{listing.title}</h1>
                             <h3>Likes: {listing.likes}</h3>
                         </article>
                     </section>

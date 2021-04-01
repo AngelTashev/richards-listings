@@ -7,8 +7,8 @@ import ErrorMessage from '../Shared/ErrorMessage';
 
 class AddListing extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             errors: {
@@ -23,71 +23,55 @@ class AddListing extends Component {
         this.onFileChangeHandler = this.onFileChangeHandler.bind(this);
     }
 
-    validateTitle(title) {
+    validate(title, description, price) {
+
+        let errors = { title: '', description: '', price: '' }
+
         if (title.length < 5)
-            return 'Title should be 5 characters min';
+            errors.title = 'Title should be 5 characters min';
+        else if (title.length > 40)
+            errors.title = 'Title should be 40 characters max';
 
-        if (title.length > 20)
-            return 'Title should be 20 characters max';
-
-        return '';
-    }
-
-    validateDescription(description) {
         if (description.length < 20)
-            return 'Description should be 20 characters min';
+            errors.description = 'Description should be 20 characters min';
+        else if (description.length > 400)
+            errors.description = 'Description should be 400 characters max';
 
-        if (description.length > 400)
-            return 'Description should be 400 characters max';
-
-        return '';
-    }
-
-    validatePrice(price) {
         if (price < 0)
-            return 'Price should be 0 min';
+            errors.price = 'Price should be 0 min';
+        else if (price > 99999)
+            errors.price = 'Price should be 99999 max';
 
-        if (price > 99999)
-            return 'Price should be 99999 max';
-
-        return '';
+        return errors;
     }
 
     onFileChangeHandler(event) {
-        this.setState({selectedFile: event.target.files[0]});
+        this.setState({ selectedFile: event.target.files[0] });
         console.log(event.target.files);
     }
 
     onFormSubmit(e) {
         e.preventDefault();
 
-        const { title, description, price } = e.target;
+        const { title, description, price, category } = e.target;
+        const errors = this.validate(title.value, description.value, price.value);
+        this.setState({errors});
 
-        this.setState({
-            errors: {
-                title: this.validateTitle(title.value),
-                description: this.validateDescription(description.value),
-                price: this.validatePrice(Number(price.value)),
-            },
-        });
+        if (!errors.title &&
+            !errors.description &&
+            !errors.price) {
 
-        if (!this.state.errors.title && 
-            !this.state.errors.description && 
-            !this.state.errors.price) {
-
-                listingService.uploadListing({
-                    title: title.value,
-                    description: description.value,
-                    price: price.value,
-                    category: 'other',
-                    image: this.state.selectedFile});
+            listingService.uploadListing({
+                title: title.value,
+                description: description.value,
+                price: price.value,
+                category: category.value,
+                image: this.state.selectedFile
+            })
+            .then(res => this.props.history.push('/'));
         }
-
-
-        
     }
 
-    // TODO remove value and add onchange
     render() {
         return (
             <main className="listing-form-main">
@@ -100,15 +84,24 @@ class AddListing extends Component {
                         <ErrorMessage>{this.state.errors.title}</ErrorMessage>
 
                         <label className="listing-form-label" htmlFor="description">Description</label>
-                        <textarea required placeholder="Give your listing a good description!" type="textarea" name="description" id="description" className="listing-form-textarea" min-length="20" max-length="400" required></textarea>
+                        <textarea required placeholder="Give your listing a good description!" type="textarea" name="description" id="description" className="listing-form-textarea"></textarea>
                         <ErrorMessage>{this.state.errors.description}</ErrorMessage>
 
                         <label className="listing-form-label" htmlFor="price">Price</label>
-                        <input required type="number" min="0" max="99999" name="price" id="price" className="listing-form-text-input" />
+                        <input required type="number" name="price" id="price" className="listing-form-text-input" />
+                        <ErrorMessage>{this.state.errors.price}</ErrorMessage>
+
+                        <label className="listing-form-label" htmlFor="category">Category</label>
+                        <select required name="category" id="category" className="listing-form-text-input">
+                            <option selected value="other">Other</option>
+                            <option value="tech">Tech</option>
+                            <option value="house">House</option>
+                            <option value="cars">Cars</option>
+                        </select>
                         <ErrorMessage>{this.state.errors.price}</ErrorMessage>
 
                         <label className="listing-form-label" htmlFor="image">Choose an image...</label>
-                        <input  onChange={this.onFileChangeHandler} type="file" name="image" id="image" className="listing-form-file"></input>
+                        <input onChange={this.onFileChangeHandler} type="file" name="image" id="image" className="listing-form-file"></input>
 
                         <button type="submit" className="listing-form-button" id="add-listing-button">Add!</button>
 

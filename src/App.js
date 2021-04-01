@@ -32,6 +32,7 @@ function App() {
         <Route path="/register" component={Register} />
         <Route path="/listings/:id" component={ListingDetails} exact/>
         <Route path="/add-listing" component={AddListing} />
+        <Route path="/user" component={UserDetails}></Route>
       </Switch>
 
       <Footer></Footer>

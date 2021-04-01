@@ -11,14 +11,14 @@ register page +
 login page +
 user page +
 edit user page
-add listing page +
+add listing page +++
 edit listing
-all listings page +
-listing details page ++
+all listings page ++
+listing details page +++
 user listings page
 about us page
 
-listingService +
+listingService ++
 getAll +
 getOne ++
 
@@ -26,12 +26,20 @@ errorHandling
 
 fix firebase rules
 
-add show listings by category
+add show listings by category +
 show username in listing details by userId
 
-make picture to not appear if abscent
+make picture to not appear if abscent +++
 
 show username in header when logged in
 
-fix forms
-add category options to add listing formq
+fix forms +
+add category options to add listing form +++
+add picture upload to listing form +++
+fix add listing verification +++
+
+add category and date to listing details +++
+
+sort listings by dates +++
+
+add loading screen +++
