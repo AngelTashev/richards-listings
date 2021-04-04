@@ -11,7 +11,7 @@ function Header(props) {
                 <Link to="/add-listing">Add Listing</Link>
             </li>
             <li className="header-nav-item">
-                <Link to="/user">angel.tashev</Link>
+                <Link to="/user">angel.tashev.15@gmail.com</Link>
             </li>
         </ul>)
         :

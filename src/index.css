@@ -444,6 +444,11 @@ main {
     justify-content: space-between;
 }
 
+.listing-details-category-container,
+.listing-details-date-container {
+    align-self: flex-start;
+}
+
 .listing-details-price-container {
     display: flex;
     justify-content: space-between;

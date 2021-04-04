@@ -1,12 +1,12 @@
 favicon -
-logo +
+logo +++
 
 header +
-footer +
+footer +++
 
 PAGES
 
-landing page +
+landing page +++
 register page +
 login page +
 user page +
@@ -27,19 +27,17 @@ errorHandling
 fix firebase rules
 
 add show listings by category +
-show username in listing details by userId
-
-make picture to not appear if abscent +++
-
+show username in listing details +
+    
 show username in header when logged in
 
 fix forms +
+
+
+make picture to not appear if abscent +++
 add category options to add listing form +++
 add picture upload to listing form +++
 fix add listing verification +++
-
 add category and date to listing details +++
-
 sort listings by dates +++
-
 add loading screen +++

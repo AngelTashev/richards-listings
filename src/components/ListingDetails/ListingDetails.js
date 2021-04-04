@@ -1,6 +1,7 @@
 import { Component } from 'react';
 
 import * as listingService from '../../services/listingService';
+import * as dateFormatter from '../../utils/dateFormatter';
 
 class ListingDetails extends Component {
 
@@ -29,6 +30,16 @@ class ListingDetails extends Component {
                         <article className="listing-details-title-container">
                             <h1 className="listing-details-title">{listing.title}</h1>
                             <h3>Likes: {listing.likes}</h3>
+                        </article>
+                        <article className="listing-details-date-container">
+                            <p>
+                                Published on: {dateFormatter.formatDate(new Date(listing.createdOn))}
+                            </p>
+                        </article>
+                        <article className="listing-details-category-container">
+                            <p>
+                                Category: {listing.category}
+                            </p>
                         </article>
                     </section>
                     <section className="listing-details-info-container">

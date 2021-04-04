@@ -11,6 +11,7 @@ import UserDetails from './components/UserDetails';
 import AllListings from './components/AllListings';
 import ListingDetails from './components/ListingDetails';
 import AddListing from './components/AddListing';
+import EditListing from './components/EditListing';
 
 let isUserLogged = true;
 
@@ -31,6 +32,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/listings/:id" component={ListingDetails} exact/>
+        <Route path="/listings/:id/edit" component={EditListing} exact/>
         <Route path="/add-listing" component={AddListing} />
         <Route path="/user" component={UserDetails}></Route>
       </Switch>

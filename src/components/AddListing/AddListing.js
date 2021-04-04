@@ -98,7 +98,6 @@ class AddListing extends Component {
                             <option value="house">House</option>
                             <option value="cars">Cars</option>
                         </select>
-                        <ErrorMessage>{this.state.errors.price}</ErrorMessage>
 
                         <label className="listing-form-label" htmlFor="image">Choose an image...</label>
                         <input onChange={this.onFileChangeHandler} type="file" name="image" id="image" className="listing-form-file"></input>
