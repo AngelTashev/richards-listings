@@ -1,27 +1,99 @@
+import { useState } from 'react';
+
+import firebase from '../../utils/firebase';
+import * as validator from '../../utils/validator';
+
+import ErrorMessage from '../Shared/ErrorMessage';
+
 function Register() {
+
+    const [fullName, setFullName] = useState('');
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [repeatPassword, setRepeatPassword] = useState('');
+
+    const [errors, setErrors] = useState({
+        fullName: '',
+        username: '', password: '',
+        repeatPassword: '', email: ''
+    });
+
+    const onNameChangeHandler = (e) => {
+        const formName = e.target.value;
+        setErrors({ ...errors, fullName: validator.fullName(formName) });
+        setFullName(formName);
+    }
+
+    const onUsernameChangeHandler = (e) => {
+        const formUsername = e.target.value;
+        setErrors({ ...errors, username: validator.username(formUsername) });
+        setUsername(formUsername);
+    }
+
+    const onEmailChangeHandler = (e) => {
+        const formEmail = e.target.value;
+        setErrors({ ...errors, email: validator.email(formEmail) });
+        setEmail(formEmail);
+    }
+
+    const onPasswordChangeHandler = (e) => {
+        const formPassword = e.target.value;
+        setErrors({ ...errors, password: validator.password(formPassword)});
+        setPassword(formPassword);
+        console.log(formPassword);
+    }
+
+    const onPasswordRepeatChangeHandler = (e) => {
+        const formRepeatPassword = e.target.value;
+        const savedPassword = password;
+        setErrors({ ...errors, repeatPassword: validator.password(savedPassword, formRepeatPassword) });
+        setRepeatPassword(formRepeatPassword);
+    }
+
+    // const onFormSubmit = (e) => {
+    //     e.preventDefault();
+
+    //     if (!errors.title &&
+    //         !errors.description &&
+    //         !errors.price) {
+
+    //         listingService.updateListing({
+    //             id: match.params.id,
+    //             title,
+    //             description,
+    //             price,
+    //             image: selectedFile
+    //         })
+    //         .then(res => history.push('/'));
+    //     }
+    // }
+
     return (
         <main className="login-main">
             <h1>Register</h1>
             <section className="login-form-container">
                 <form className="login-form" action="">
 
-                    <label className="login-label" for="first-name-input">First Name</label>
-                    <input required placeholder="First Name" type="text" name="first-name-input" id="first-name-input" className="login-text-input" />
+                    <label class="login-label" for="fullName">Full Name</label>
+                    <input onChange={onNameChangeHandler} required placeholder="Last Name" type="text" name="fullName" id="fullName" className="login-text-input" />
+                    <ErrorMessage>{errors.fullName}</ErrorMessage>
 
-                    <label class="login-label" for="last-name-input">Last Name</label>
-                    <input required placeholder="Last Name" type="text" name="last-name-input" id="last-name-input" className="login-text-input" />
+                    <label class="login-label" for="username">Username</label>
+                    <input onChange={onUsernameChangeHandler} required placeholder="Username" type="text" name="username" id="username" className="login-text-input" />
+                    <ErrorMessage>{errors.username}</ErrorMessage>
 
-                    <label class="login-label" for="username-input">Username</label>
-                    <input required placeholder="Username" type="text" name="username-input" id="username-input" className="login-text-input" />
+                    <label class="login-label" for="email">Email</label>
+                    <input onChange={onEmailChangeHandler} required placeholder="user@example.com" type="email" name="email" id="email" className="login-text-input" />
+                    <ErrorMessage>{errors.email}</ErrorMessage>
 
-                    <label class="login-label" for="email-input">Password</label>
-                    <input required placeholder="user@example.com" type="email" name="email-input" id="email-input" className="login-text-input" />
+                    <label class="login-label" for="password">Password</label>
+                    <input onChange={onPasswordChangeHandler} required placeholder="Password" type="password" name="password" id="password" className="login-text-input" />
+                    <ErrorMessage>{errors.password}</ErrorMessage>
 
-                    <label class="login-label" for="password-input">Password</label>
-                    <input required placeholder="Password" type="password" name="password-input" id="password-input" className="login-text-input" />
-
-                    <label class="login-label" for="repeat-password-input">Repeat Password</label>
-                    <input required placeholder="Repeat Password" type="password" name="repeat-password-input" id="repeat-password-input" className="login-text-input" />
+                    <label class="login-label" for="repeat-password">Repeat Password</label>
+                    <input onChange={onPasswordRepeatChangeHandler} required placeholder="Repeat Password" type="password" name="repeat-password" id="repeat-password" className="login-text-input" />
+                    <ErrorMessage>{errors.repeatPassword}</ErrorMessage>
 
                     <button type="submit" className="login-button" id="login-button">Let's go!</button>
 

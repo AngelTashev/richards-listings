@@ -1,4 +1,16 @@
+import { useState } from 'react';
+
+import firebase from '../../utils/firebase';
+
 function Login() {
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const [errors, setErrors] = useState({ username: '', password: '' });
+
+    
+
     return (
         <main className="login-main">
             <h1>Login</h1>
