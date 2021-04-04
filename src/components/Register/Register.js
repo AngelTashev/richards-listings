@@ -39,15 +39,14 @@ function Register() {
 
     const onPasswordChangeHandler = (e) => {
         const formPassword = e.target.value;
-        setErrors({ ...errors, password: validator.password(formPassword)});
+        setErrors({ ...errors, password: validator.password(formPassword),
+                                repeatPassword: validator.repeatPassword(formPassword, repeatPassword)});
         setPassword(formPassword);
-        console.log(formPassword);
     }
 
     const onPasswordRepeatChangeHandler = (e) => {
         const formRepeatPassword = e.target.value;
-        const savedPassword = password;
-        setErrors({ ...errors, repeatPassword: validator.password(savedPassword, formRepeatPassword) });
+        setErrors({ ...errors, repeatPassword: validator.repeatPassword(password, formRepeatPassword) });
         setRepeatPassword(formRepeatPassword);
     }
 
