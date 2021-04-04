@@ -1,11 +1,15 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-import firebase from '../../utils/firebase';
 import * as validator from '../../utils/validator';
+
+import * as userService from '../../services/userService';
 
 import ErrorMessage from '../Shared/ErrorMessage';
 
 function Register() {
+
+    const history = useHistory();
 
     const [fullName, setFullName] = useState('');
     const [username, setUsername] = useState('');
@@ -14,9 +18,9 @@ function Register() {
     const [repeatPassword, setRepeatPassword] = useState('');
 
     const [errors, setErrors] = useState({
-        fullName: '',
+        fullName: '', email: '',
         username: '', password: '',
-        repeatPassword: '', email: ''
+        repeatPassword: ''
     });
 
     const onNameChangeHandler = (e) => {
@@ -50,29 +54,26 @@ function Register() {
         setRepeatPassword(formRepeatPassword);
     }
 
-    // const onFormSubmit = (e) => {
-    //     e.preventDefault();
+    const onFormSubmit = (e) => {
+        e.preventDefault();
 
-    //     if (!errors.title &&
-    //         !errors.description &&
-    //         !errors.price) {
+        if (!errors.fullName && !errors.username &&
+            !errors.email && !errors.password &&
+            !errors.repeatPassword) {
 
-    //         listingService.updateListing({
-    //             id: match.params.id,
-    //             title,
-    //             description,
-    //             price,
-    //             image: selectedFile
-    //         })
-    //         .then(res => history.push('/'));
-    //     }
-    // }
+            userService.registerUserAndSaveData({
+                fullName, username,
+                email, password
+            })
+            .then(res => history.push('/'));
+        }
+    }
 
     return (
         <main className="login-main">
             <h1>Register</h1>
             <section className="login-form-container">
-                <form className="login-form" action="">
+                <form className="login-form" onSubmit={onFormSubmit}>
 
                     <label class="login-label" for="fullName">Full Name</label>
                     <input onChange={onNameChangeHandler} required placeholder="Last Name" type="text" name="fullName" id="fullName" className="login-text-input" />

@@ -13,6 +13,8 @@ import ListingDetails from './components/ListingDetails';
 import AddListing from './components/AddListing';
 import EditListing from './components/EditListing';
 
+import './utils/firebase';
+
 let isUserLogged = true;
 
 function App() {
