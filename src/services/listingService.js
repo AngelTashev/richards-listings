@@ -4,7 +4,10 @@ const baseUrl = 'https://richards-listings-default-rtdb.firebaseio.com/listings/
 
 export const getAll = (category = '') => {
     return fetch(baseUrl + '.json')
-        .then(res => res.json())
+        .then(res => {
+            res = res.json();
+            return res;
+        })
         .then(res => category === '' ? res : filterListings(res, category))
         .then(res => sortListings(res))
         .catch(err => alert(err)); // TODO - error hadling
@@ -22,7 +25,7 @@ export const uploadListing = (listingInfo) => {
     return fileService.uploadFile(image)
         .then(res => {
 
-            return fetch(baseUrl + '.json?orderBy="category"&startAt="tech"', {
+            return fetch(baseUrl + '.json', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -39,8 +42,32 @@ export const uploadListing = (listingInfo) => {
                 })
             })
                 .catch(err => console.log(err)); // TODO
-        })
+        });
 
+}
+
+export const updateListing = (listingInfo) => {
+    const { id, title, description, price, image } = listingInfo;
+
+    return fileService.uploadFile(image)
+        .then(res => {
+
+
+            const data = {
+                title, description, price
+            }
+            if (res) data.imageUrl = res;
+
+            return fetch(baseUrl + `${id}.json`, {
+
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .catch(err => console.log(err)); // TODO
+        });
 }
 
 const filterListings = (listings, category) =>  {

@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import * as listingService from '../../services/listingService';
 
 import ErrorMessage from '../Shared/ErrorMessage';
 
-const EditListing = ({ props, match }) => {
+const EditListing = ({ match }) => {
+
+    const history = useHistory();
 
     const [errors, setErrors] = useState({
         title: '',
@@ -33,44 +36,21 @@ const EditListing = ({ props, match }) => {
             });
     }, [listing]);
 
-    const validate = (title, description, price) => {
-
-        let errors = { title: '', description: '', price: '' }
-
-
-
-        if (description.length < 20)
-            errors.description = 'Description should be 20 characters min';
-        else if (description.length > 400)
-            errors.description = 'Description should be 400 characters max';
-
-        if (price < 0)
-            errors.price = 'Price should be 0 min';
-        else if (price > 99999)
-            errors.price = 'Price should be 99999 max';
-
-        return errors;
-    }
-
     const onFormSubmit = (e) => {
         e.preventDefault();
-
-        const { title, description, price, category } = e.target;
-        const errors = validate(title.value, description.value, price.value);
-        setErrors(errors);
 
         if (!errors.title &&
             !errors.description &&
             !errors.price) {
 
-            // listingService.uploadListing({
-            //     title: title.value,
-            //     description: description.value,
-            //     price: price.value,
-            //     category: category.value,
-            //     image: this.state.selectedFile
-            // })
-            // .then(res => this.props.history.push('/'));
+            listingService.updateListing({
+                id: match.params.id,
+                title,
+                description,
+                price,
+                image: selectedFile
+            })
+            .then(res => history.push('/'));
         }
     }
 
@@ -107,6 +87,20 @@ const EditListing = ({ props, match }) => {
         setDescription(formDesc);
     }
 
+    const onPriceChangeHandler = (e) => {
+
+        const formPrice = Number(e.target.value);
+
+        if (formPrice.length < 0)
+            setErrors({ ...errors, price: 'Price should be 0 min' });
+        else if (formPrice.length >= 0 && formPrice.length <= 99999)
+            setErrors({ ...errors, price: '' });
+        else if (formPrice.length > 99999)
+            setErrors({ ...errors, price: 'Price should be 99999 max' });
+
+        setPrice(formPrice);
+    }
+
     return (
         <main className="listing-form-main">
             <h1>Edit Listing</h1>
@@ -122,7 +116,7 @@ const EditListing = ({ props, match }) => {
                     <ErrorMessage>{errors.description}</ErrorMessage>
 
                     <label className="listing-form-label" htmlFor="price">Price</label>
-                    <input required type="number" name="price" id="price" className="listing-form-text-input" value={price} />
+                    <input onChange={onPriceChangeHandler} required type="number" name="price" id="price" className="listing-form-text-input" value={price} />
                     <ErrorMessage>{errors.price}</ErrorMessage>
 
                     <label className="listing-form-label" htmlFor="image">Choose an image...</label>

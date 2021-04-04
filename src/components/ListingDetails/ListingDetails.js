@@ -49,7 +49,7 @@ class ListingDetails extends Component {
                             </p>
                         </article>
                         <article className="listing-details-price-container">
-                            <h3>Price: <span>${listing.price}</span></h3>
+                            <h3>Price: <span>${listing.price == 0 ? 'Free' : listing.price}</span></h3>
                             <button className="listing-details-button">
                                 <a href="">
                                     <i className="fas fa-heart details-like-heart"></i>

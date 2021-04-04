@@ -3,8 +3,6 @@ const apiKey = '644331637917722';
 
 export const uploadFile = (file) => {
 
-    console.log(file);
-
     if (!file) 
         return Promise.resolve('');
 
@@ -22,5 +20,3 @@ export const uploadFile = (file) => {
         .then(res => res.secure_url)
         .catch(err => console.log(err)); //TODO
 }
-
-

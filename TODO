@@ -1,7 +1,7 @@
-favicon -
+favicon +++
 logo +++
 
-header +
+header ++ (auth)
 footer +++
 
 PAGES
@@ -12,7 +12,7 @@ login page +
 user page +
 edit user page
 add listing page +++
-edit listing
+edit listing +++
 all listings page ++
 listing details page +++
 user listings page
