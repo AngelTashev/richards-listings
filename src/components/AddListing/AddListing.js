@@ -49,7 +49,6 @@ class AddListing extends Component {
 
     onFileChangeHandler(event) {
         this.setState({ selectedFile: event.target.files[0] });
-        console.log(event.target.files);
     }
 
     onFormSubmit(e) {
@@ -70,7 +69,8 @@ class AddListing extends Component {
                 category: category.value,
                 image: this.state.selectedFile,
             })
-            .then(res => this.props.history.push('/'));
+            .then(this.props.history.push('/'))
+            .catch(console.log); // TODO
         }
     }
 

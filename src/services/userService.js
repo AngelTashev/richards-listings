@@ -1,4 +1,5 @@
 import * as authService from './authService';
+import * as fileService from './fileService';
 
 const baseUrl = 'https://richards-listings-default-rtdb.firebaseio.com/users/'
 
@@ -30,4 +31,23 @@ export const registerUserAndSaveData = (userData) => {
                 }})
             })
         })
+}
+
+export const uploadProfilePicture = (uid, picture) => {
+    return fileService.uploadFile(picture)
+        .then(res => {
+            const data = res ? { profilePicUrl: res} : null;
+
+            if (data) {
+                return fetch(baseUrl + `${uid}.json`, {
+
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+            }
+            return new Error('Image not uploaded');
+        });
 }

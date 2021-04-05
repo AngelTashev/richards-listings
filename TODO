@@ -9,7 +9,7 @@ PAGES
 landing page +++
 register page +++
 login page +++
-user page +
+user page ++
 add listing page +++
 edit listing +++
 all listings page ++
@@ -17,23 +17,23 @@ listing details page +++
 user listings page
 about us page
 
-edit user picture
-
 userService +++
-authService ++
+authService +++
 fileService +++
 listingService ++
 getAll ++
 getOne +++
 
-errorHandling -- userDetails, listingService
+errorHandling -- userDetails, listingService, addListing
 
 fix firebase rules
 
 add show listings by category +
 
-fix forms ++
+remove likes from user details page
 
+fix forms +++
+edit user picture +++
 fix onAuthStateChanged for auth rendering +++
 add email and username check to register +++
 show username in header when logged in +++
