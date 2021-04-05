@@ -10,9 +10,15 @@ export const getAll = (category = '') => {
             res = res.json();
             return res;
         })
-        .then(res => category === '' ? res : filterListings(res, category))
+        .then(res => category === '' ? res : filterListings(res, 'category', category))
         .then(res => sortListings(res))
         .catch(err => alert(err)); // TODO - error hadling
+}
+
+export const getAllByUserId = (uid) => {
+    return getAll('')
+        .then(res => filterListings(res, 'userId', uid))
+        .catch(err => console.log(err)); // TODO - error handling
 }
 
 export const getOne = (id) => {
@@ -72,9 +78,9 @@ export const updateListing = (listingInfo) => {
         });
 }
 
-const filterListings = (listings, category) =>  {
+const filterListings = (listings, filterBy, filter) =>  {
     const asArray = Object.entries(listings);
-    const filtered = asArray.filter(([key, value]) => value.category === category);
+    const filtered = asArray.filter(([key, value]) => value[filterBy] === filter);
     return Object.fromEntries(filtered);
 }
 

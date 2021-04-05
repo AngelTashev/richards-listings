@@ -8,7 +8,7 @@ PAGES
 
 landing page +++
 register page +++
-login page +
+login page +++
 user page +
 add listing page +++
 edit listing +++
@@ -16,6 +16,7 @@ all listings page ++
 listing details page +++
 user listings page
 about us page
+
 edit user picture
 
 userService +++
@@ -25,7 +26,8 @@ listingService ++
 getAll ++
 getOne +++
 
-errorHandling
+errorHandling -- userDetails, listingService
+
 fix firebase rules
 
 add show listings by category +
