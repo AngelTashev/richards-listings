@@ -26,6 +26,8 @@ errorHandling
 
 fix firebase rules
 
+!!! fix onAuthStateChanged for auth rendering
+
 add email and username check to register
 add show listings by category +
 show username in listing details +
