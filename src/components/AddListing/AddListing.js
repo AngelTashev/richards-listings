@@ -93,7 +93,7 @@ class AddListing extends Component {
 
                         <label className="listing-form-label" htmlFor="category">Category</label>
                         <select required name="category" id="category" className="listing-form-text-input">
-                            <option selected value="other">Other</option>
+                            <option defaultValue="other">Other</option>
                             <option value="tech">Tech</option>
                             <option value="house">House</option>
                             <option value="cars">Cars</option>

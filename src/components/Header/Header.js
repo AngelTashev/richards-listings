@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom';
-
-let isUserLogged = true; //TODO
-
+import { useState } from 'react';
 
 function Header(props) {
 
-    let userSection = isUserLogged ?
+    const [loggedUser, setLoggedUser] = useState(props.loggedUser);
+
+    let userSection = loggedUser ?
         (<ul>
             <li className="header-nav-item">
                 <Link to="/add-listing">Add Listing</Link>
             </li>
             <li className="header-nav-item">
-                <Link to="/user">angel.tashev.15@gmail.com</Link>
+                <Link to="/user">{loggedUser.email}</Link>
             </li>
         </ul>)
         :

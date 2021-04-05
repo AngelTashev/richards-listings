@@ -20,7 +20,7 @@ function Register() {
     const [errors, setErrors] = useState({
         fullName: '', email: '',
         username: '', password: '',
-        repeatPassword: ''
+        repeatPassword: '', auth: ''
     });
 
     const onNameChangeHandler = (e) => {
@@ -65,13 +65,15 @@ function Register() {
                 fullName, username,
                 email, password
             })
-            .then(res => history.push('/'));
+            .then(res => history.push('/'))
+            .catch(err => setErrors({...errors, auth: err}));
         }
     }
 
     return (
         <main className="login-main">
             <h1>Register</h1>
+            <ErrorMessage>{errors.auth}</ErrorMessage>
             <section className="login-form-container">
                 <form className="login-form" onSubmit={onFormSubmit}>
 

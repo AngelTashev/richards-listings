@@ -7,7 +7,7 @@ footer +++
 PAGES
 
 landing page +++
-register page +
+register page +++
 login page +
 user page +
 edit user page
@@ -26,6 +26,7 @@ errorHandling
 
 fix firebase rules
 
+add email and username check to register
 add show listings by category +
 show username in listing details +
     

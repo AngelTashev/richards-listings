@@ -5,3 +5,9 @@ export const registerUserAndGetEmail = (credentials) => {
             .createUserWithEmailAndPassword
             (credentials.email, credentials.password);
 }
+
+export const signInUser = (credentials) => {
+    return firebase.auth()
+            .signInWithEmailAndPassword
+            (credentials.email, credentials.password);
+}
