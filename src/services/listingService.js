@@ -1,5 +1,7 @@
 import * as fileService from './fileService';
 
+import { auth } from '../utils/firebase';
+
 const baseUrl = 'https://richards-listings-default-rtdb.firebaseio.com/listings/'
 
 export const getAll = (category = '') => {
@@ -38,7 +40,7 @@ export const uploadListing = (listingInfo) => {
                     imageUrl: res,
                     createdOn: new Date(),
                     likes: 0,
-                    userId: 'todo'
+                    userId: auth.currentUser.uid,
                 })
             })
                 .catch(err => console.log(err)); // TODO

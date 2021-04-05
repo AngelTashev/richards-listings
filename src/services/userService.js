@@ -2,6 +2,14 @@ import * as authService from './authService';
 
 const baseUrl = 'https://richards-listings-default-rtdb.firebaseio.com/users/'
 
+export const getUserDetailsById = (id) => {
+
+    return fetch(baseUrl + `${id}.json`)
+        .then(res => res.json())
+        .catch(console.log); // TODO
+
+}
+
 export const registerUserAndSaveData = (userData) => {
 
     const {fullName, username, email, password} = userData;

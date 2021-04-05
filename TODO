@@ -1,7 +1,7 @@
 favicon +++
 logo +++
 
-header ++ (auth)
+header +++
 footer +++
 
 PAGES
@@ -10,33 +10,32 @@ landing page +++
 register page +++
 login page +
 user page +
-edit user page
 add listing page +++
 edit listing +++
 all listings page ++
 listing details page +++
 user listings page
 about us page
+edit user picture
 
+userService +++
+authService ++
+fileService +++
 listingService ++
-getAll +
-getOne ++
+getAll ++
+getOne +++
 
 errorHandling
-
 fix firebase rules
 
-!!! fix onAuthStateChanged for auth rendering
-
-add email and username check to register
 add show listings by category +
-show username in listing details +
-    
-show username in header when logged in
 
-fix forms +
+fix forms ++
 
-
+fix onAuthStateChanged for auth rendering +++
+add email and username check to register +++
+show username in header when logged in +++
+show username in listing details +++
 make picture to not appear if abscent +++
 add category options to add listing form +++
 add picture upload to listing form +++

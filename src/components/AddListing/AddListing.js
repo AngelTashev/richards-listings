@@ -10,6 +10,8 @@ class AddListing extends Component {
     constructor(props) {
         super(props);
 
+        console.log(props);
+
         this.state = {
             errors: {
                 title: '',
@@ -66,7 +68,7 @@ class AddListing extends Component {
                 description: description.value,
                 price: price.value,
                 category: category.value,
-                image: this.state.selectedFile
+                image: this.state.selectedFile,
             })
             .then(res => this.props.history.push('/'));
         }

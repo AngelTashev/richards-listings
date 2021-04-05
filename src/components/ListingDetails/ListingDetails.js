@@ -1,6 +1,9 @@
 import { Component } from 'react';
 
+import { auth } from '../../utils/firebase';
+
 import * as listingService from '../../services/listingService';
+import * as userService from '../../services/userService';
 import * as dateFormatter from '../../utils/dateFormatter';
 
 class ListingDetails extends Component {
@@ -8,17 +11,23 @@ class ListingDetails extends Component {
     constructor(match) {
         super(match);
 
-        this.state = { match: match.match, listing: {} };
+        this.state = { match: match.match, listing: {}, username: '' };
     }
 
     componentDidMount() {
         listingService.getOne(this.state.match.params.id)
-            .then(res => this.setState({listing: res}))
+            .then(listingRes => {
 
+                userService.getUserDetailsById(listingRes.userId)
+                    .then(userRes => this.setState({ listing: listingRes, username: userRes.username }))
+                    .catch(console.log); //TODO
+            })
+            .catch(console.log); //TODO
     }
 
     render() {
         const listing = this.state.listing;
+        const username = this.state.username;
         return (
             <main className="listing-details-main">
                 <section className="listing-details-container">
@@ -60,7 +69,7 @@ class ListingDetails extends Component {
                         <article className="listing-details-user-container">
                             <div>
                                 <p>Listing by: </p>
-                                <h3 className="listing-details-username">{listing.userId}</h3> {/* TODO view username by userId */}
+                                <h3 className="listing-details-username">{username}</h3> {/* TODO view username by userId */}
                             </div>
                             <button className="listing-details-button"><a href="">View User Listings</a></button>
                         </article>
