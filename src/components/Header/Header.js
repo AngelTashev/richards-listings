@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 function Header(props) {
 
-    const [loggedUser, setLoggedUser] = useState(props.loggedUser);
+    const loggedUser = props.user;
 
     let userSection = loggedUser ?
         (<ul>

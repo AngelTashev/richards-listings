@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import './App.css';
@@ -20,9 +20,7 @@ function App() {
 
   const [loggedUser, setLoggedUser] = useState(null);
 
-  useEffect(() => {
-      setLoggedUser(firebase.auth().currentUser);
-  }, [])
+  useEffect(firebase.auth().onAuthStateChanged(setLoggedUser), []);
 
   return (
     <div className="App">
@@ -43,6 +41,10 @@ function App() {
         <Route path="/listings/:id/edit" user={loggedUser} component={EditListing} exact/>
         <Route path="/add-listing" user={loggedUser} component={AddListing} />
         <Route path="/user" user={loggedUser} component={UserDetails}></Route>
+        <Route path="/logout" render={() => {
+          firebase.auth().signOut();
+          return <Redirect to='/'/>
+        }}></Route>
       </Switch>
 
       <Footer></Footer>
