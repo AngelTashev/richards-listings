@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import * as authService from '../../services/authService';
@@ -7,7 +7,11 @@ import firebase from '../../utils/firebase';
 
 import ErrorMessage from '../Shared/ErrorMessage';
 
+import AuthContext from '../AuthContext';
+
 function Login() {
+
+    const { user } = useContext(AuthContext);
 
     const history = useHistory();
 
@@ -25,7 +29,10 @@ function Login() {
         const password = e.target.password.value;
 
         authService.signInUser({email, password})
-            .then(res => history.push('/'))
+            .then(res => {
+                AuthContext.Provider.value = res;
+                history.push('/');
+            })
             .catch(err => setErrors({...errors, auth: err.message}));
     }
 

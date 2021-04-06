@@ -1,6 +1,6 @@
 import style from './AllListings.module.css';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import * as listingService from '../../services/listingService';
 
 import Listing from './Listing';
