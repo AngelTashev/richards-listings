@@ -11,7 +11,7 @@ import AuthContext from '../AuthContext';
 
 function Login() {
 
-    const { user } = useContext(AuthContext);
+    const { setUser } = useContext(AuthContext);
 
     const history = useHistory();
 
@@ -30,7 +30,7 @@ function Login() {
 
         authService.signInUser({email, password})
             .then(res => {
-                AuthContext.Provider.value = res;
+                setUser(res.user);
                 history.push('/');
             })
             .catch(err => setErrors({...errors, auth: err.message}));

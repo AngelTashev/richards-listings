@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import * as userService from '../../services/userService';
@@ -7,21 +7,25 @@ import * as listingService from '../../services/listingService';
 import { auth } from '../../utils/firebase';
 
 import ErrorMessage from '../Shared/ErrorMessage';
+import AuthContext from '../AuthContext';
 
 function UserDetails() {
 
+    const { user } = useContext(AuthContext);
+    console.log(user);
+
     const history = useHistory();
 
-    const [userInfo, setUserInfo] = useState({});
+    const [userDetails, setUserDetails] = useState({ fullName: '', username: '', profilePicUrl: ''})
     const [userListings, setUserListings] = useState({});
     const [selectedFile, setSelectedFile] = useState(null);
     const [error, setError] = useState('');
 
     useEffect(() => {
-        userService.getUserDetailsById(auth.currentUser.uid)
-            .then(setUserInfo)
-            .catch(console.log); // TODO
-        listingService.getAllByUserId(auth.currentUser.uid)
+        userService.getUserDetailsById(user.uid)
+            .then(setUserDetails)
+            .catch(console.log) // TODO
+        listingService.getAllByUserId(user.uid)
             .then(setUserListings)
             .catch(console.log) // TODO
         setError('');
@@ -34,7 +38,7 @@ function UserDetails() {
     const onFormSubmit = (e) => {
         e.preventDefault();
 
-        userService.uploadProfilePicture(auth.currentUser.uid, selectedFile)
+        userService.uploadProfilePicture(user.uid, selectedFile)
             .then(history.push('/'))
             .catch(err => setError(err.message));
     }
@@ -43,7 +47,7 @@ function UserDetails() {
         <main className="user-details-main">
             <section className="user-picture-name-section">
                 <article className="user-details-picture-container">
-                    <img className="user-details-picture" src={userInfo.profilePicUrl ? userInfo.profilePicUrl : "https://genslerzudansdentistry.com/wp-content/uploads/2015/11/anonymous-user.png"} alt="" />
+                    <img className="user-details-picture" src={userDetails.profilePicUrl ? userDetails.profilePicUrl : "https://genslerzudansdentistry.com/wp-content/uploads/2015/11/anonymous-user.png"} alt="" />
                 </article>
                 <form className="listing-form" onSubmit={onFormSubmit}>
 
@@ -54,8 +58,8 @@ function UserDetails() {
 
                 </form>
                 <article className="user-name-container">
-                    <h1 className="user-name-fullname">{userInfo.fullName}</h1>
-                    <p className="user-name-username">{userInfo.username}</p>
+                    <h1 className="user-name-fullname">{userDetails.fullName}</h1>
+                    <p className="user-name-username">{userDetails.username}</p>
                 </article>
             </section>
             <section className="user-details-section">

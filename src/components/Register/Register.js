@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import * as validator from '../../utils/validator';
@@ -7,7 +7,11 @@ import * as userService from '../../services/userService';
 
 import ErrorMessage from '../Shared/ErrorMessage';
 
+import AuthContext from '../AuthContext';
+
 function Register() {
+
+    const { setUser } = useContext(AuthContext);
 
     const history = useHistory();
 
@@ -65,7 +69,10 @@ function Register() {
                 fullName, username,
                 email, password
             })
-            .then(res => history.push('/'))
+            .then(res => {
+                setUser(res);
+                history.push('/');
+            })
             .catch(err => setErrors({...errors, auth: err}));
         }
     }

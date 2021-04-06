@@ -317,6 +317,7 @@ main {
     max-width: 1200px;
     margin: auto;
     padding-top: 100px;
+    padding-bottom: 200px;
 }
 
 .user-picture-name-section {

@@ -1,5 +1,5 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 
 import './App.css';
 import Header from './components/Header';
@@ -20,26 +20,23 @@ import firebase from './utils/firebase';
 
 function App() {
 
-  const { user } = useContext(AuthContext);
   const [loggedUser, setLoggedUser] = useState(null);
-
-  useEffect(firebase.auth().onAuthStateChanged(setLoggedUser), []);
 
   return (
     <div className="App">
 
+      <AuthContext.Provider value={{ user: loggedUser, setUser: setLoggedUser }}>
 
-      <Header logo={logo} user={loggedUser}></Header>
+        <Header logo={logo}></Header>
 
-      <Switch>
-        {loggedUser &&
-          <Route path="/" component={AllListings} exact />
-        }
-        {!loggedUser &&
-          <Route path="/" component={AnonymousLanding} exact />
-        }
-        {/* <Route path="/listings/:category" component={AllListings} exact /> */}
-        <AuthContext.Provider value={{ user: null }}>
+        <Switch>
+          {loggedUser &&
+            <Route path="/" component={AllListings} exact />
+          }
+          {!loggedUser &&
+            <Route path="/" component={AnonymousLanding} exact />
+          }
+          {/* <Route path="/listings/:category" component={AllListings} exact /> */}
 
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
@@ -49,14 +46,16 @@ function App() {
           <Route path="/user" user={loggedUser} component={UserDetails}></Route>
           <Route path="/logout" render={() => {
             firebase.auth().signOut();
+            setLoggedUser(null);
             return <Redirect to='/' />
           }}></Route>
-          
-        </AuthContext.Provider>
 
-      </Switch>
 
-      <Footer></Footer>
+        </Switch>
+
+        <Footer></Footer>
+      </AuthContext.Provider>
+
 
 
       {/* <header className="App-header">

@@ -1,17 +1,27 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+
+import { auth } from '../../utils/firebase';
+
+import AuthContext from '../AuthContext';
 
 function Header(props) {
 
-    const loggedUser = props.user;
+    const { user } = useContext(AuthContext);
 
-    let userSection = loggedUser ?
+    const [loggedUser, setLoggedUser] = useState(props.logged);
+
+    useEffect(() => {
+        setLoggedUser(auth.currentUser);
+    }, [auth.currentUser])
+
+    let userSection = user ?
         (<ul>
             <li className="header-nav-item">
                 <Link to="/add-listing">Add Listing</Link>
             </li>
             <li className="header-nav-item">
-                <Link to="/user">{loggedUser.email}</Link>
+                <Link to="/user">{user.email}</Link>
             </li>
         </ul>)
         :
