@@ -22,10 +22,14 @@ function App() {
 
   const [loggedUser, setLoggedUser] = useState(null);
 
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(setLoggedUser);
+  }, [])
+
   return (
     <div className="App">
 
-      <AuthContext.Provider value={{ user: loggedUser, setUser: setLoggedUser }}>
+      <AuthContext.Provider value={{ user: loggedUser }}>
 
         <Header logo={logo}></Header>
 

@@ -4,15 +4,12 @@ import { useHistory } from 'react-router-dom';
 import * as userService from '../../services/userService';
 import * as listingService from '../../services/listingService';
 
-import { auth } from '../../utils/firebase';
-
 import ErrorMessage from '../Shared/ErrorMessage';
 import AuthContext from '../AuthContext';
 
 function UserDetails() {
 
     const { user } = useContext(AuthContext);
-    console.log(user);
 
     const history = useHistory();
 

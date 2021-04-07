@@ -1,19 +1,11 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect, useContext } from 'react';
-
-import { auth } from '../../utils/firebase';
+import { useContext } from 'react';
 
 import AuthContext from '../AuthContext';
 
 function Header(props) {
 
     const { user } = useContext(AuthContext);
-
-    const [loggedUser, setLoggedUser] = useState(props.logged);
-
-    useEffect(() => {
-        setLoggedUser(auth.currentUser);
-    }, [auth.currentUser])
 
     let userSection = user ?
         (<ul>

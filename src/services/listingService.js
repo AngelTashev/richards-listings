@@ -1,10 +1,9 @@
 import * as fileService from './fileService';
-
-import { auth } from '../utils/firebase';
-
-const baseUrl = 'https://richards-listings-default-rtdb.firebaseio.com/listings/'
+ 
+const baseUrl = 'https://richards-listings-default-rtdb.firebaseio.com/listings/';
 
 export const getAll = (category = '') => {
+
     return fetch(baseUrl + '.json')
         .then(res => {
             res = res.json();
@@ -27,7 +26,8 @@ export const getOne = (id) => {
         .catch(alert); // TODO - error hadling
 }
 
-export const uploadListing = (listingInfo) => {
+export const uploadListing = (userId, listingInfo) => {
+
     const { title, description, price, category, image } = listingInfo;
 
     return fileService.uploadFile(image)
@@ -46,7 +46,7 @@ export const uploadListing = (listingInfo) => {
                     imageUrl: res,
                     createdOn: new Date(),
                     likes: 0,
-                    userId: auth.currentUser.uid,
+                    userId,
                 })
             })
                 .catch(err => console.log(err)); // TODO

@@ -1,9 +1,10 @@
-import { Component } from 'react';
+import { Component, useContext } from 'react';
 
 import * as listingService from '../../services/listingService';
 
 import ErrorMessage from '../Shared/ErrorMessage';
 
+import AuthContext from '../AuthContext';
 
 class AddListing extends Component {
 
@@ -62,7 +63,7 @@ class AddListing extends Component {
             !errors.description &&
             !errors.price) {
 
-            listingService.uploadListing({
+            listingService.uploadListing(this.context.user.uid, {
                 title: title.value,
                 description: description.value,
                 price: price.value,
@@ -112,5 +113,7 @@ class AddListing extends Component {
         );
     }
 }
+
+AddListing.contextType = AuthContext;
 
 export default AddListing;

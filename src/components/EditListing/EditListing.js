@@ -1,11 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import * as listingService from '../../services/listingService';
 
+import AuthContext from '../AuthContext';
 import ErrorMessage from '../Shared/ErrorMessage';
 
 const EditListing = ({ match }) => {
+
+    const { user } = useContext(AuthContext);
 
     const history = useHistory();
 

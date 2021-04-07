@@ -1,7 +1,5 @@
 import { Component } from 'react';
 
-import { auth } from '../../utils/firebase';
-
 import * as listingService from '../../services/listingService';
 import * as userService from '../../services/userService';
 import * as dateFormatter from '../../utils/dateFormatter';
