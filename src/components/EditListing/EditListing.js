@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 
 import * as listingService from '../../services/listingService';
 
@@ -104,7 +104,7 @@ const EditListing = ({ match }) => {
         setPrice(formPrice);
     }
 
-    return (
+    return user ? (
         <main className="listing-form-main">
             <h1>Edit Listing</h1>
             <section className="listing-form-container">
@@ -130,7 +130,9 @@ const EditListing = ({ match }) => {
                 </form>
             </section>
         </main>
-    );
+    )
+    :
+    <Redirect to="/"/>
 
 }
 

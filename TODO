@@ -34,6 +34,7 @@ remove likes from user details page
 
 add google maps and tockify calendar to about us page
 
+redirect to anonymous page if user is not logged in+++
 fix forms +++
 edit user picture +++
 fix onAuthStateChanged for auth rendering +++

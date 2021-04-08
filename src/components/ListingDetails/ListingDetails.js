@@ -1,8 +1,11 @@
 import { Component } from 'react';
+import { Redirect } from 'react-router';
 
 import * as listingService from '../../services/listingService';
 import * as userService from '../../services/userService';
 import * as dateFormatter from '../../utils/dateFormatter';
+
+import AuthContext from '../AuthContext';
 
 class ListingDetails extends Component {
 
@@ -24,6 +27,8 @@ class ListingDetails extends Component {
     }
 
     render() {
+        if (!this.context.user) return <Redirect to="/"/>;
+
         const listing = this.state.listing;
         const username = this.state.username;
         return (
@@ -77,5 +82,7 @@ class ListingDetails extends Component {
         );
     }
 }
+
+ListingDetails.contextType = AuthContext;
 
 export default ListingDetails;

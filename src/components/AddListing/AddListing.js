@@ -1,4 +1,5 @@
 import { Component, useContext } from 'react';
+import { Redirect } from 'react-router';
 
 import * as listingService from '../../services/listingService';
 
@@ -76,7 +77,7 @@ class AddListing extends Component {
     }
 
     render() {
-        return (
+        return this.context.user ? (
             <main className="listing-form-main">
                 <h1>Add Listing</h1>
                 <section className="listing-form-container">
@@ -110,7 +111,9 @@ class AddListing extends Component {
                     </form>
                 </section>
             </main>
-        );
+        )
+        :
+        <Redirect to="/login" />
     }
 }
 

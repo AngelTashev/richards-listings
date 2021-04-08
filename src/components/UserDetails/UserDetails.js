@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 
 import * as userService from '../../services/userService';
 import * as listingService from '../../services/listingService';
@@ -19,14 +19,18 @@ function UserDetails() {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        userService.getUserDetailsById(user.uid)
-            .then(setUserDetails)
-            .catch(console.log) // TODO
-        listingService.getAllByUserId(user.uid)
-            .then(setUserListings)
-            .catch(console.log) // TODO
-        setError('');
+        if (user) {
+            userService.getUserDetailsById(user.uid)
+                .then(setUserDetails)
+                .catch(console.log) // TODO
+            listingService.getAllByUserId(user.uid)
+                .then(setUserListings)
+                .catch(console.log) // TODO
+            setError('');
+        }
     }, []);
+
+    if (!user) return <Redirect to="/" />
 
     const onFileChangeHandler = (e) => {
         setSelectedFile(e.target.files[0]);
@@ -69,7 +73,7 @@ function UserDetails() {
                 </article>
             </section>
         </main>
-    )
+    );
 }
 
 export default UserDetails;
