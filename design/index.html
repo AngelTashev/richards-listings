@@ -53,27 +53,34 @@
 
     </header>
 
-    <main class="listing-form-main">
-        <h1>Add Listing</h1>
-        <section class="listing-form-container">
-            <form class="listing-form" action="">
-
-                <label class="listing-form-label" for="title-input">Title</label>
-                <input required placeholder="Title of your listing" type="text" name="title-input" id="title-input" class="listing-form-text-input" />
-
-                <label class="listing-form-label" for="description-input">Description</label>
-                <textarea required placeholder="Give your listing a good description!" type="textarea" name="description-input" id="description-input" class="listing-form-textarea" min-length="20" max-length="400" required></textarea>
+    <main class="about-main">
+        <article class="about-title-container">
+            <h1 class="about-title">About us</h1>
+        </article>
+        <section class="about-section">
+            <section class="about-maps-section">
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe width="450" height="350" id="gmap_canvas" src="https://maps.google.com/maps?q=Sofia,%20Bulgaria%20boulevard%2081A&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                        </iframe>
+                        <a href="https://123movies-to.org">123movies</a><br>
+                        <style>
+                            .mapouter{position:relative;text-align:right;height:350px;width:450px;}
+                        </style>
+                        <a href="https://www.embedgooglemap.net">how to add a google map to my website</a>
+                        <style>
+                            .gmap_canvas {overflow:hidden;background:none!important;height:350px;width:450px;}
+                        </style>
+                    </div>
+                </div>
+            </section>
+            <section class="about-calendar-section">
+                <div data-tockify-component="mini" data-tockify-calendar="angel.tashev"></div>
+                <script data-cfasync="false" data-tockify-script="embed" src="https://public.tockify.com/browser/embed.js"></script>
+            </section>
+            <section class="about-calendar-section">
                 
-                <label class="listing-form-label" for="price-input">Price</label>
-                <input required value="100" type="number" min="0" max="99999" name="price-input" id="price-input" class="listing-form-text-input" />
-
-                <label class="listing-form-label" for="image-input">Choose an image...</label>
-                <input required type="file" name="image-input" id="image-input" class="listing-form-file"></input>
-
-
-                <button type="submit" class="listing-form-button" id="add-listing-button">Add!</button>
-
-            </form>
+            </section>
         </section>
     </main>
 

@@ -581,6 +581,34 @@ main {
 }
 
 
+
+.about-main {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.about-title-container {
+    margin: auto;
+    font-size: 32px;
+}
+
+.about-title {
+    font-size: 32px;
+}
+
+.about-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.about-calendar-section {
+
+}
+
+
 /* Color scheme 
  #D68FD6 - Plum Web
  #893168 - Amaranth M P
