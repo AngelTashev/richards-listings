@@ -19,7 +19,7 @@ const AboutUs = () => {
                         <div className="gmap_canvas">
                             <iframe width="450" height="350" id="gmap_canvas"
                                 src="https://maps.google.com/maps?q=Sofia,%20Bulgaria%20boulevard%2081A&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                                frameBorder="0" scrolling="no">
                             </iframe>
                         </div>
                     </div>

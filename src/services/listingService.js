@@ -78,6 +78,17 @@ export const updateListing = (listingInfo) => {
         });
 }
 
+export const updateListingLikes = (id, likes) => {
+
+    return fetch(baseUrl + `${id}.json`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json' 
+        },
+        body: JSON.stringify({likes}),
+    });
+}
+
 const filterListings = (listings, filterBy, filter) =>  {
     const asArray = Object.entries(listings);
     const filtered = asArray.filter(([key, value]) => value[filterBy] === filter);

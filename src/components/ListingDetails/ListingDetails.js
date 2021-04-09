@@ -12,7 +12,8 @@ class ListingDetails extends Component {
     constructor(match) {
         super(match);
 
-        this.state = { match: match.match, listing: {}, username: '' };
+        this.state = { match: match.match, listing: {}, username: '', likes: 0 };
+        this.likeListing = this.likeListing.bind(this);
     }
 
     componentDidMount() {
@@ -20,10 +21,16 @@ class ListingDetails extends Component {
             .then(listingRes => {
 
                 userService.getUserDetailsById(listingRes.userId)
-                    .then(userRes => this.setState({ listing: listingRes, username: userRes.username }))
+                    .then(userRes => this.setState({ listing: listingRes, username: userRes.username, likes: listingRes.likes }))
                     .catch(console.log); //TODO
             })
             .catch(console.log); //TODO
+    }
+
+    likeListing() {
+        listingService.updateListingLikes(this.state.match.params.id, this.state.likes + 1)
+            .then(this.setState({ likes: this.state.likes + 1}))
+            .catch(console.log); // TODO
     }
 
     render() {
@@ -41,7 +48,7 @@ class ListingDetails extends Component {
                         </article>
                         <article className="listing-details-title-container">
                             <h1 className="listing-details-title">{listing.title}</h1>
-                            <h3>Likes: {listing.likes}</h3>
+                            <h3>Likes: {this.state.likes}</h3>
                         </article>
                         <article className="listing-details-date-container">
                             <p>
@@ -62,11 +69,9 @@ class ListingDetails extends Component {
                         </article>
                         <article className="listing-details-price-container">
                             <h3>Price: <span>${listing.price == 0 ? 'Free' : listing.price}</span></h3>
-                            <button className="listing-details-button">
-                                <a href="">
+                            <button onClick={this.likeListing} className="listing-details-button">
                                     <i className="fas fa-heart details-like-heart"></i>
                                     Like
-                                </a>
                             </button>
                         </article>
                         <article className="listing-details-user-container">
