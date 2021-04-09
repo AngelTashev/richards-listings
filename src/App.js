@@ -13,6 +13,7 @@ import AllListings from './components/AllListings';
 import ListingDetails from './components/ListingDetails';
 import AddListing from './components/AddListing';
 import EditListing from './components/EditListing';
+import AboutUs from './components/AboutUs';
 
 import AuthContext from './components/AuthContext';
 
@@ -44,10 +45,11 @@ function App() {
 
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Route path="/listings/:id" user={loggedUser} component={ListingDetails} exact />
-          <Route path="/listings/:id/edit" user={loggedUser} component={EditListing} exact />
-          <Route path="/add-listing" user={loggedUser} component={AddListing} />
-          <Route path="/user" user={loggedUser} component={UserDetails}></Route>
+          <Route path="/listings/:id" component={ListingDetails} exact />
+          <Route path="/listings/:id/edit" component={EditListing} exact />
+          <Route path="/add-listing" component={AddListing} />
+          <Route path="/user" component={UserDetails}></Route>
+          <Route path="/about-us" component={AboutUs}></Route>
           <Route path="/logout" render={() => {
             firebase.auth().signOut();
             setLoggedUser(null);

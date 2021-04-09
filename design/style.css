@@ -602,11 +602,43 @@ main {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
+    margin-bottom: 300px;
 }
 
+.about-map-section,
 .about-calendar-section {
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.about-contact-article {
+    display: flex;
+    align-items: center;
+    align-self: flex-end;
+}
+
+.about-contact-article i {
+    margin-right: 10px;
+}
+
+/** Map styles **/
+
+.mapouter {
+    position: relative;
+    text-align: right;
+    height: 350px;
+    width: 450px;
+}
+
+.gmap_canvas {
+    overflow: hidden;
+    background: none !important;
+    height: 350px;
+    width: 450px;
+}
+
+/** Map styles **/
 
 
 /* Color scheme 

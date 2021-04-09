@@ -15,7 +15,7 @@ edit listing +++
 all listings page ++
 listing details page +++
 user listings page
-about us page ++
+about us page +++
 
 userService +++
 authService +++
@@ -24,16 +24,15 @@ listingService ++
 getAll ++
 getOne +++
 
-errorHandling -- userDetails, listingService, addListing
+! errorHandling -- userDetails, listingService, addListing
 
-fix firebase rules
+! fix firebase rules
 
 add show listings by category +
 
 remove likes from user details page
 
-add info to about us page
-
+add info to about us page +++
 add google maps and tockify calendar to about us page +++
 redirect to anonymous page if user is not logged in +++
 fix forms +++
