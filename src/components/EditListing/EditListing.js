@@ -31,7 +31,7 @@ const EditListing = ({ match }) => {
                 setPrice(res.price);
                 return res;
             });
-    });
+    }, []);
 
     const onFormSubmit = (e) => {
         e.preventDefault();
