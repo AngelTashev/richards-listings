@@ -61,6 +61,7 @@ function UserDetails() {
                 <article className="user-name-container">
                     <h1 className="user-name-fullname">{userDetails.fullName}</h1>
                     <p className="user-name-username">{userDetails.username}</p>
+                    <button className="photo-form-button"><Link to="/logout">Logout</Link></button>
                 </article>
             </section>
             <section className="user-details-section">
