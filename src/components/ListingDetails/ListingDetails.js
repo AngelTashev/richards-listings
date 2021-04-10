@@ -13,7 +13,7 @@ class ListingDetails extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { match: props.match, listing: {}, username: '', userId: '', likes: 0 };
+        this.state = { match: props.match, listing: {}, username: '', profilePicUrl: '', userId: '', likes: 0 };
         this.likeListing = this.likeListing.bind(this);
     }
 
@@ -22,7 +22,7 @@ class ListingDetails extends Component {
             .then(listingRes => {
 
                 userService.getUserDetailsById(listingRes.userId)
-                    .then(userRes => this.setState({ listing: listingRes, username: userRes.username, userId: listingRes.userId, likes: listingRes.likes }))
+                    .then(userRes => this.setState({ listing: listingRes, username: userRes.username, profilePicUrl: userRes.profilePicUrl, userId: listingRes.userId, likes: listingRes.likes }))
                     .catch(err => this.props.history.push('/error'));
             })
             .catch(err => this.props.history.push('/error' + err));
@@ -30,16 +30,17 @@ class ListingDetails extends Component {
 
     likeListing() {
         listingService.updateListingLikes(this.state.match.params.id, this.state.likes + 1)
-            .then(this.setState({ likes: this.state.likes + 1}))
+            .then(this.setState({ likes: this.state.likes + 1 }))
             .catch(err => this.props.history.push('/error'));
     }
 
     render() {
-        if (!this.context.user) return <Redirect to="/"/>;
+        if (!this.context.user) return <Redirect to="/" />;
 
         const listing = this.state.listing;
         const username = this.state.username;
         const userId = this.state.userId;
+        const profilePicUrl = this.state.profilePicUrl;
         return (
             <main className="listing-details-main">
                 <section className="listing-details-container">
@@ -72,7 +73,7 @@ class ListingDetails extends Component {
                         <article className="listing-details-price-container">
                             <h3>Price: <span>{Number(listing.price) === 0 ? 'Free' : `$${listing.price}`}</span></h3>
                             <button onClick={this.likeListing} className="listing-details-button">
-                                    <i className="fas fa-heart details-like-heart"></i>
+                                <i className="fas fa-heart details-like-heart"></i>
                                     Like
                             </button>
                         </article>
@@ -81,6 +82,9 @@ class ListingDetails extends Component {
                                 <p>Listing by: </p>
                                 <h3 className="listing-details-username">{username}</h3>
                             </div>
+                            <article className="user-details-picture-container listing-profile-picture-container">
+                                <img className="user-details-picture" src={profilePicUrl ? profilePicUrl : "https://genslerzudansdentistry.com/wp-content/uploads/2015/11/anonymous-user.png"} alt="" />
+                            </article>
                             <button className="listing-details-button"><Link to={`/user/${userId}/listings`}>View User Listings</Link></button>
                         </article>
                     </section>
