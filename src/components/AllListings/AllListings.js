@@ -13,15 +13,21 @@ const AllListings = ({
     let [title, setTitle] = useState('Loading...');
     console.log(match.params.category); // TODO add show by category
 
-    useEffect(() => {
+    const updateListings = () => {
         listingService.getAll()
-            .then(res => {
-                setListings(res);
-                setTitle('All Listings');
-            })
-            .catch(alert) //TODO Handle error
+        .then(res => {
+            setListings(res);
+            setTitle('All Listings');
+        })
+        .catch(alert) //TODO Handle error
+    }
+
+    useEffect(() => {
+        updateListings();
+        setTimeout(updateListings, 1000);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
 
     return (<main className={style.allListingsMain}>
         <article className={style.allListingsTitleContainer}>

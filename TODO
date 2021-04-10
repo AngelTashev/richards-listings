@@ -10,22 +10,24 @@ landing page +++
 register page +++
 login page +++
 logout +++
-user page ++
 add listing page +++
 edit listing +++
-all listings page ++
 listing details page +++
-user listings page +
+user listings page +++
 about us page +++
+delete listing +++
+user page ++
+all listings page ++
+
 
 userService +++
 authService +++
 fileService +++
-listingService ++
-getAll ++
+listingService +++
+getAll +++
 getOne +++
 
-! errorHandling -- userDetails, listingService, addListing
+! errorHandling
 
 ! fix firebase rules
 
@@ -53,6 +55,7 @@ make picture to not appear if abscent +++
 add category options to add listing form +++
 add picture upload to listing form +++
 fix add listing verification +++
+add timeout to listing CRUD +++
 add category and date to listing details +++
 sort listings by dates +++
 add loading screen +++

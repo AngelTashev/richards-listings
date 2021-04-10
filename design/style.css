@@ -702,6 +702,52 @@ main {
 
 
 
+
+.delete-picture-container {
+    width: 200px;
+    height: 200px;
+    margin-top: 50px;
+}
+
+.delete-picture {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.delete-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-info-container h3 {
+    color: #555;
+}
+
+.delete-button {
+    width: 100px;
+    height: 50px;
+    background: #FFBC42;
+    border: 2px solid #000;
+    border-radius: 10px;
+    margin: 0px 5px;
+    outline: none;
+}
+
+.delete-yes {
+    color: #dd1212;
+    font-weight: 200;
+    font-size: 16px;
+}
+
+.delete-no {
+    color: #00aa00;
+    font-weight: 700;
+    font-size: 20px;
+}
+
 /* Color scheme 
  #D68FD6 - Plum Web
  #893168 - Amaranth M P

@@ -70,7 +70,7 @@ class ListingDetails extends Component {
                             </p>
                         </article>
                         <article className="listing-details-price-container">
-                            <h3>Price: <span>${Number(listing.price) === 0 ? 'Free' : listing.price}</span></h3>
+                            <h3>Price: <span>{Number(listing.price) === 0 ? 'Free' : `$${listing.price}`}</span></h3>
                             <button onClick={this.likeListing} className="listing-details-button">
                                     <i className="fas fa-heart details-like-heart"></i>
                                     Like

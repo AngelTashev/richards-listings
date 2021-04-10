@@ -10,20 +10,17 @@ export const getAll = (category = '') => {
             return res;
         })
         .then(res => category === '' ? res : filterListings(res, 'category', category))
-        .then(res => sortListings(res))
-        .catch(err => alert(err)); // TODO - error hadling
+        .then(res => sortListings(res));
 }
 
 export const getAllByUserId = (uid) => {
     return getAll('')
-        .then(res => filterListings(res, 'userId', uid))
-        .catch(err => console.log(err)); // TODO - error handling
+        .then(res => filterListings(res, 'userId', uid));
 }
 
 export const getOne = (id) => {
     return fetch(baseUrl + id + '.json')
-        .then(res => res.json())
-        .catch(alert); // TODO - error hadling
+        .then(res => res.json());
 }
 
 export const uploadListing = (userId, listingInfo) => {
@@ -48,8 +45,7 @@ export const uploadListing = (userId, listingInfo) => {
                     likes: 0,
                     userId,
                 })
-            })
-                .catch(err => console.log(err)); // TODO
+            });
         });
 
 }
@@ -73,8 +69,7 @@ export const updateListing = (listingInfo) => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
-            })
-                .catch(err => console.log(err)); // TODO
+            });
         });
 }
 
@@ -86,7 +81,14 @@ export const updateListingLikes = (id, likes) => {
             'Content-Type': 'application/json' 
         },
         body: JSON.stringify({likes}),
-    }).catch(err => console.log(err));
+    });
+}
+
+export const deleteListing = (id) => {
+    
+    return fetch(baseUrl + `${id}.json`, {
+        method: 'DELETE',
+    });
 }
 
 const filterListings = (listings, filterBy, filter) =>  {

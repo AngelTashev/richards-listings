@@ -15,6 +15,7 @@ import AddListing from './components/AddListing';
 import EditListing from './components/EditListing';
 import AboutUs from './components/AboutUs';
 import UserAllListings from './components/UserAllListings';
+import DeleteListing from './components/DeleteListing';
 
 import AuthContext from './components/AuthContext';
 
@@ -48,6 +49,7 @@ function App() {
           <Route path="/register" component={Register} />
           <Route path="/listings/:id" component={ListingDetails} exact />
           <Route path="/listings/:id/edit" component={EditListing} exact />
+          <Route path="/listings/:id/delete" component={DeleteListing} exact />
           <Route path="/add-listing" component={AddListing} />
           <Route path="/user" component={UserDetails} exact />
           <Route path="/user/:userId/listings" component={UserAllListings}/>

@@ -6,7 +6,12 @@ const UserListing = ({ userListing, canModify }) => {
         <article className="user-listing">
             <div className="user-listing-info">
                 <h3>{userListing.title}</h3>
-                <p>{userListing.price}$</p>
+                {Number(userListing.price) === 0 &&
+                    <p>Free</p>
+                }
+                {Number(userListing.price) > 0 &&
+                    <p>${userListing.price}</p>
+                }
             </div>
             <div className="user-listing-info">
                 <button className="user-listing-button"><Link to={`/listings/${userListing.id}`}>View</Link></button>

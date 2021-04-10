@@ -17,20 +17,24 @@ const UserAllListings = ({ match }) => {
     const [userListings, setUserListings] = useState({});
     const [title, setTitle] = useState('Loading...');
 
+    const updateListings = () => {
+        listingService.getAllByUserId(userId)
+        .then(res => {
+            if(Object.keys(res).length === 0)
+                setTitle('no');
+            else
+                setTitle('yes');
+            setUserListings(res);
+        })
+        .catch(console.log); // TODO
+    }
 
     useEffect(() => {
         userService.getUserDetailsById(userId)
             .then(setUserInfo)
             .catch(console.log); // TODO
-        listingService.getAllByUserId(userId)
-            .then(res => {
-                if(Object.keys(res).length === 0)
-                    setTitle('no');
-                else
-                    setTitle('yes');
-                setUserListings(res);
-            })
-            .catch(console.log); // TODO
+        updateListings();
+        setTimeout(updateListings, 1000);
             // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

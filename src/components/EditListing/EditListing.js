@@ -47,7 +47,7 @@ const EditListing = ({ match }) => {
                 price,
                 image: selectedFile
             })
-            .then(history.push('/'));
+            .then(history.push(`/user/${user.uid}/listings`));
         }
     }
 
