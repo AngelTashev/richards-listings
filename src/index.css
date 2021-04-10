@@ -645,10 +645,13 @@ main {
 
 .user-listings-title-container {
     margin: 30px 0px;
+    display: flex;
+    align-items: center;
 }
 
 .user-listings-title-container h1 {
     font-size: 26px;
+    margin-right: 20px;
 }
 
 .user-listings-container {

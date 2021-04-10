@@ -80,7 +80,7 @@ function Register() {
                 <form className="login-form" onSubmit={onFormSubmit}>
 
                     <label class="login-label" for="fullName">Full Name</label>
-                    <input onChange={onNameChangeHandler} required placeholder="Last Name" type="text" name="fullName" id="fullName" className="login-text-input" />
+                    <input onChange={onNameChangeHandler} required placeholder="Full Name" type="text" name="fullName" id="fullName" className="login-text-input" />
                     <ErrorMessage>{errors.fullName}</ErrorMessage>
 
                     <label class="login-label" for="username">Username</label>

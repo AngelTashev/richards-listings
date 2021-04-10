@@ -15,7 +15,6 @@ const AllListings = ({
 
     let [listings, setListings] = useState({});
     let [title, setTitle] = useState('Loading...');
-    console.log(match.params.category); // TODO add show by category
 
     const updateListings = () => {
         listingService.getAll()

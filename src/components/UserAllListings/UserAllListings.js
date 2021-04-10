@@ -20,14 +20,14 @@ const UserAllListings = ({ match }) => {
 
     const updateListings = () => {
         listingService.getAllByUserId(userId)
-        .then(res => {
-            if(Object.keys(res).length === 0)
-                setTitle('no');
-            else
-                setTitle('yes');
-            setUserListings(res);
-        })
-        .catch(err => history.push('/error'));
+            .then(res => {
+                if (Object.keys(res).length === 0)
+                    setTitle('no');
+                else
+                    setTitle('yes');
+                setUserListings(res);
+            })
+            .catch(err => history.push('/error'));
     }
 
     useEffect(() => {
@@ -36,7 +36,7 @@ const UserAllListings = ({ match }) => {
             .catch(err => history.push('/error'));
         updateListings();
         setTimeout(updateListings, 1000);
-            // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     if (!user) return <Redirect to="/" />
@@ -56,11 +56,14 @@ const UserAllListings = ({ match }) => {
                 {title === 'yes' &&
                     <h1>{userInfo.username}'s listings</h1>
                 }
+                <article className="user-details-picture-container listing-profile-picture-container">
+                    <img className="user-details-picture" src={userInfo.profilePicUrl ? userInfo.profilePicUrl : "https://genslerzudansdentistry.com/wp-content/uploads/2015/11/anonymous-user.png"} alt="" />
+                </article>
             </article>
 
             <section className="user-listings-container">
                 {Object.keys(userListings).map(x =>
-                    <UserListing key={x} userListing={{...userListings[x], id: x}} canModify={canModify} />
+                    <UserListing key={x} userListing={{ ...userListings[x], id: x }} canModify={canModify} />
                 )}
             </section>
         </main>

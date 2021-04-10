@@ -18,15 +18,20 @@ function UserDetails() {
     const [selectedFile, setSelectedFile] = useState(null);
     const [error, setError] = useState('');
 
+    const updateUserDetails = () => {
+        userService.getUserDetailsById(user.uid)
+        .then(setUserDetails)
+        .catch(err => history.push('/error'));
+    }
+
     useEffect(() => {
         if (user) {
-            userService.getUserDetailsById(user.uid)
-                .then(setUserDetails)
-                .catch(err => history.push('/error'));
+            updateUserDetails();
             listingService.getAllByUserId(user.uid)
                 .then(setUserListings)
                 .catch(err => history.push('/error'));
             setError('');
+            setTimeout(updateUserDetails, 1000);
         }
     }, [user, history]);
 
