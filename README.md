@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# `Richard's Listings Documentation`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project uses ReactJS for front-end and Firebase for back-end.
+Other API's used: Cloudinary (Cloud storage), Google Maps, Tockify calendar.
 
-## Available Scripts
+## `Routes`
 
-In the project directory, you can run:
+The routes of the application:
 
-### `npm start`
+### `/ (home page)`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+If you are not authenticated, you can come to the anonymous home page and login or register.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+If you are authenticated, you will be welcomed by the All Listings page.
 
-### `npm test`
+### `/login`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This page allows you to log into your profile.
 
-### `npm run build`
+### `/register`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+You can create your new profile from here, entering all of the needed data.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `/logout`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This is the path for logging out of your account.
 
-### `npm run eject`
+### `/user`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This is the user space.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+From here you can view the total count of your listings and likes on all of your listings.
+You can change your profile picture from this page.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### `/user/:userId/listings`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You can see all of the user's listings by their id.
 
-## Learn More
+If you happen to be the user with the given id, you can edit or delete your listings.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### `/add-listing`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+From here you can create a listing, by giving it an eye-catching title and description.
 
-### Code Splitting
+Choose the photo of the listing carefuly! It is very imporant! (Although you are not obliged to upload a photo :) )
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### `/listings/id`
 
-### Analyzing the Bundle Size
+You can view your own, or someone else's listings on this path, given you have the right id.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+From here you can also like their listings! :)
 
-### Making a Progressive Web App
+### `/listings/id/edit`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+If you do not like the look, picture or price of your listing, here you can change that.
 
-### Advanced Configuration
+### `/listings/id/delete`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Be careful with this one! 
 
-### Deployment
+When going to this path, you are going to receive a message, that prompts you if you would like to delete your listing.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### `/about-us`
 
-### `npm run build` fails to minify
+You can find information about our office, phone or email.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+There is an integrated map from Google Maps, showing the exact location of our office.
+
+Also, we organise events! View them in the calendar, provided by Tockify, that is on this page.
+
+### `/error`
+
+OOPS! Something very bad happened. This page usualy displays, when an error happens. It can be user or server error.
+
+## `Technologies used`
+
+### `ReactJS`
+### `Firebase Cloud Storage`
+### `Clodinary Cloud Storage`
+### `Google Maps API`
+### `Tockify Calendar API`

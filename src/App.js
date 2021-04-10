@@ -38,6 +38,7 @@ function App() {
         <Header logo={logo}></Header>
 
         <Switch>
+          {/* Home pages */}
           {loggedUser &&
             <Route path="/" component={AllListings} exact />
           }
@@ -46,44 +47,34 @@ function App() {
           }
           {/* <Route path="/listings/:category" component={AllListings} exact /> */}
 
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
+          {/* Listings */}
+          <Route path="/add-listing" component={AddListing} />
           <Route path="/listings/:id" component={ListingDetails} exact />
           <Route path="/listings/:id/edit" component={EditListing} exact />
           <Route path="/listings/:id/delete" component={DeleteListing} exact />
-          <Route path="/add-listing" component={AddListing} />
+
+          {/* User */}
           <Route path="/user" component={UserDetails} exact />
           <Route path="/user/:userId/listings" component={UserAllListings}/>
+
+          {/* Other */}
           <Route path="/about-us" component={AboutUs} />
           <Route path="/error" component={Error} />
+
+          {/* Authentication */}
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
           <Route path="/logout" render={() => {
             firebase.auth().signOut();
             setLoggedUser(null);
             return <Redirect to='/' />
           }} />
 
-
         </Switch>
 
         <Footer></Footer>
       </AuthContext.Provider>
-
-
-
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
+      
     </div>
   );
 }

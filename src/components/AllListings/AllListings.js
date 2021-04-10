@@ -15,7 +15,7 @@ const AllListings = ({
 
     let [listings, setListings] = useState({});
     let [title, setTitle] = useState('Loading...');
-
+    
     const updateListings = () => {
         listingService.getAll()
         .then(res => {
