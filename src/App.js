@@ -14,6 +14,7 @@ import ListingDetails from './components/ListingDetails';
 import AddListing from './components/AddListing';
 import EditListing from './components/EditListing';
 import AboutUs from './components/AboutUs';
+import UserAllListings from './components/UserAllListings';
 
 import AuthContext from './components/AuthContext';
 
@@ -48,13 +49,14 @@ function App() {
           <Route path="/listings/:id" component={ListingDetails} exact />
           <Route path="/listings/:id/edit" component={EditListing} exact />
           <Route path="/add-listing" component={AddListing} />
-          <Route path="/user" component={UserDetails}></Route>
-          <Route path="/about-us" component={AboutUs}></Route>
+          <Route path="/user" component={UserDetails} exact />
+          <Route path="/user/:userId/listings" component={UserAllListings}/>
+          <Route path="/about-us" component={AboutUs} />
           <Route path="/logout" render={() => {
             firebase.auth().signOut();
             setLoggedUser(null);
             return <Redirect to='/' />
-          }}></Route>
+          }} />
 
 
         </Switch>

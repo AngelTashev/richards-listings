@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 
 import * as userService from '../../services/userService';
 import * as listingService from '../../services/listingService';
@@ -67,9 +67,11 @@ function UserDetails() {
                 <article className="user-details">
                     <article className="user-details-listings-container">
                         <h1>Current Listings: {Object.keys(userListings).length}</h1>
-                        <button><a href="">See All</a></button>
+                        <button><Link to={`/user/${user.uid}/listings`}>See All</Link></button>
                     </article>
-                    <h1>Likes: 109</h1>
+                    <h1>Likes: {Object.keys(userListings)
+                                    .reduce((acc, key) => acc + userListings[key].likes, 0)}
+                    </h1>
                 </article>
             </section>
         </main>

@@ -14,7 +14,7 @@ add listing page +++
 edit listing +++
 all listings page ++
 listing details page +++
-user listings page
+user listings page +
 about us page +++
 
 userService +++
@@ -30,8 +30,13 @@ getOne +++
 
 add show listings by category +
 
-remove likes from user details page
+clear errors
 
+add user picture to userListings
+add user picture to listingDetails
+add non-user userDetails page
+
+display likes in userDetails +++
 add info to about us page +++
 add google maps and tockify calendar to about us page +++
 redirect to anonymous page if user is not logged in +++
