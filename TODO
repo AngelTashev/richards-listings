@@ -16,8 +16,8 @@ listing details page +++
 user listings page +++
 about us page +++
 delete listing +++
-user page ++
-all listings page ++
+user page +++
+all listings page +++
 
 
 userService +++
@@ -27,18 +27,13 @@ listingService +++
 getAll +++
 getOne +++
 
-! errorHandling
+! errorHandling +++
 
-! fix firebase rules
+? add show listings by category ++
+? add user picture to userListings
+? add user picture to listingDetails
 
-add show listings by category +
-
-
-add user picture to userListings
-add user picture to listingDetails
-
-add likes to user listings page
-
+add likes to user listings page+++
 add non-user UserAllListings page +++
 add no listings message to AllUserListings +++
 clear errors +++
