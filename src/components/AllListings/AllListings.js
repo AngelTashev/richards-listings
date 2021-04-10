@@ -9,14 +9,14 @@ const AllListings = ({
     match
 }) => {
 
-    let [listings, setListings] = useState([{}]);
+    let [listings, setListings] = useState({});
     let [title, setTitle] = useState('Loading...');
     console.log(match.params.category); // TODO add show by category
 
     useEffect(() => {
         listingService.getAll()
             .then(res => {
-                setListings([res]);
+                setListings(res);
                 setTitle('All Listings');
             })
             .catch(alert) //TODO Handle error
@@ -29,12 +29,12 @@ const AllListings = ({
         </article>
         <section className={style.allListingsSection}>
 
-            {Object.keys(listings[0])
+            {Object.keys(listings)
                 .map(x => <Listing
                     key={x}
                     id={x}
-                    title={listings[0][x].title}
-                    imageUrl={listings[0][x].imageUrl === '' ? 'https://www.allianceplast.com/wp-content/uploads/2017/11/no-image.png' : listings[0][x].imageUrl}
+                    title={listings[x].title}
+                    imageUrl={listings[x].imageUrl === '' ? 'https://www.allianceplast.com/wp-content/uploads/2017/11/no-image.png' : listings[x].imageUrl}
                 />)}
 
         </section>

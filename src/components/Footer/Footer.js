@@ -19,29 +19,19 @@ function Footer() {
                     <article className="footer-share-container">
                         <ul className="footer-share-menu">
                             <li className="share-menu-item">
-                                <a href="">
-                                    <i className="fab fa-facebook-square"></i>
-                                </a>
+                                <i className="fab fa-facebook-square"></i>
                             </li>
                             <li className="share-menu-item">
-                                <a href="">
-                                    <i className="fab fa-twitter"></i>
-                                </a>
+                                <i className="fab fa-twitter"></i>
                             </li>
                             <li className="share-menu-item">
-                                <a href="">
-                                    <i className="fab fa-google-plus"></i>
-                                </a>
+                                <i className="fab fa-google-plus"></i>
                             </li>
                             <li className="share-menu-item">
-                                <a href="">
-                                    <i className="fab fa-linkedin"></i>
-                                </a>
+                                <i className="fab fa-linkedin"></i>
                             </li>
                             <li className="share-menu-item">
-                                <a href="">
-                                    <i className="fab fa-instagram"></i>
-                                </a>
+                                <i className="fab fa-instagram"></i>
                             </li>
                         </ul>
                     </article>

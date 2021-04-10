@@ -86,7 +86,7 @@ export const updateListingLikes = (id, likes) => {
             'Content-Type': 'application/json' 
         },
         body: JSON.stringify({likes}),
-    });
+    }).catch(err => console.log(err));
 }
 
 const filterListings = (listings, filterBy, filter) =>  {

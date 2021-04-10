@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import * as listingService from '../../services/listingService';
 import * as userService from '../../services/userService';
@@ -12,7 +13,7 @@ class ListingDetails extends Component {
     constructor(match) {
         super(match);
 
-        this.state = { match: match.match, listing: {}, username: '', likes: 0 };
+        this.state = { match: match.match, listing: {}, username: '', userId: '', likes: 0 };
         this.likeListing = this.likeListing.bind(this);
     }
 
@@ -21,7 +22,7 @@ class ListingDetails extends Component {
             .then(listingRes => {
 
                 userService.getUserDetailsById(listingRes.userId)
-                    .then(userRes => this.setState({ listing: listingRes, username: userRes.username, likes: listingRes.likes }))
+                    .then(userRes => this.setState({ listing: listingRes, username: userRes.username, userId: listingRes.userId, likes: listingRes.likes }))
                     .catch(console.log); //TODO
             })
             .catch(console.log); //TODO
@@ -38,6 +39,7 @@ class ListingDetails extends Component {
 
         const listing = this.state.listing;
         const username = this.state.username;
+        const userId = this.state.userId;
         return (
             <main className="listing-details-main">
                 <section className="listing-details-container">
@@ -68,7 +70,7 @@ class ListingDetails extends Component {
                             </p>
                         </article>
                         <article className="listing-details-price-container">
-                            <h3>Price: <span>${listing.price == 0 ? 'Free' : listing.price}</span></h3>
+                            <h3>Price: <span>${Number(listing.price) === 0 ? 'Free' : listing.price}</span></h3>
                             <button onClick={this.likeListing} className="listing-details-button">
                                     <i className="fas fa-heart details-like-heart"></i>
                                     Like
@@ -77,9 +79,9 @@ class ListingDetails extends Component {
                         <article className="listing-details-user-container">
                             <div>
                                 <p>Listing by: </p>
-                                <h3 className="listing-details-username">{username}</h3> {/* TODO view username by userId */}
+                                <h3 className="listing-details-username">{username}</h3>
                             </div>
-                            <button className="listing-details-button"><a href="">View User Listings</a></button>
+                            <button className="listing-details-button"><Link to={`/user/${userId}/listings`}>View User Listings</Link></button>
                         </article>
                     </section>
                 </section>

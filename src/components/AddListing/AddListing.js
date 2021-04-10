@@ -1,4 +1,4 @@
-import { Component, useContext } from 'react';
+import { Component } from 'react';
 import { Redirect } from 'react-router';
 
 import * as listingService from '../../services/listingService';

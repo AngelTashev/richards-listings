@@ -18,12 +18,6 @@ const EditListing = ({ match }) => {
         price: '',
     });
 
-    const [listing, setListing] = useState({
-        title: '',
-        description: '',
-        price: '',
-    });
-
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
@@ -37,7 +31,7 @@ const EditListing = ({ match }) => {
                 setPrice(res.price);
                 return res;
             });
-    }, [listing]);
+    });
 
     const onFormSubmit = (e) => {
         e.preventDefault();
@@ -53,13 +47,12 @@ const EditListing = ({ match }) => {
                 price,
                 image: selectedFile
             })
-            .then(res => history.push('/'));
+            .then(history.push('/'));
         }
     }
 
     const onFileChangeHandler = (e) => {
         setSelectedFile(e.target.files[0]);
-        console.log(e.target.files);
     }
 
     const onTitleChangeHandler = (e) => {

@@ -145,11 +145,8 @@ footer {
     border-radius: 50px;
 }
 
-.share-menu-item a {
-    color: #fff;
-}
-
 .share-menu-item i {
+    color: #fff;
     font-size: 20px;
 }
 

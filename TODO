@@ -30,12 +30,14 @@ getOne +++
 
 add show listings by category +
 
-clear errors
 
 add user picture to userListings
 add user picture to listingDetails
 add non-user userDetails page
 
+add non-user UserAllListings page +++
+add no listings message to AllUserListings +++
+clear errors +++
 display likes in userDetails +++
 add info to about us page +++
 add google maps and tockify calendar to about us page +++

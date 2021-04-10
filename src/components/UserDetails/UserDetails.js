@@ -28,7 +28,7 @@ function UserDetails() {
                 .catch(console.log) // TODO
             setError('');
         }
-    }, []);
+    }, [user]);
 
     if (!user) return <Redirect to="/" />
 
