@@ -22,13 +22,13 @@ function UserDetails() {
         if (user) {
             userService.getUserDetailsById(user.uid)
                 .then(setUserDetails)
-                .catch(console.log) // TODO
+                .catch(err => history.push('/error'));
             listingService.getAllByUserId(user.uid)
                 .then(setUserListings)
-                .catch(console.log) // TODO
+                .catch(err => history.push('/error'));
             setError('');
         }
-    }, [user]);
+    }, [user, history]);
 
     if (!user) return <Redirect to="/" />
 

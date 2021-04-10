@@ -1,6 +1,8 @@
 import style from './AllListings.module.css';
 
 import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+
 import * as listingService from '../../services/listingService';
 
 import Listing from './Listing';
@@ -8,6 +10,8 @@ import Listing from './Listing';
 const AllListings = ({
     match
 }) => {
+
+    const history = useHistory();
 
     let [listings, setListings] = useState({});
     let [title, setTitle] = useState('Loading...');
@@ -19,14 +23,14 @@ const AllListings = ({
             setListings(res);
             setTitle('All Listings');
         })
-        .catch(alert) //TODO Handle error
+        .catch(err => history.push('/error'));
     }
 
     useEffect(() => {
         updateListings();
         setTimeout(updateListings, 1000);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [match.params.category]);
 
 
     return (<main className={style.allListingsMain}>

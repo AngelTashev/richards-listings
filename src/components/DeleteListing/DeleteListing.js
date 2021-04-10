@@ -14,8 +14,9 @@ const DeleteListing = ({ match }) => {
     useEffect(() => {
         listingService.getOne(match.params.id)
             .then(setListing)
-            .catch(console.log); // TODO
-    });
+            .catch(err => history.push('/error'));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [match.params.id]);
 
     const onNoButtonClickHandler = () => {
         history.push(`/user/${user.uid}/listings`);
@@ -24,7 +25,7 @@ const DeleteListing = ({ match }) => {
     const onYesButtonClickHandler = () => {
         listingService.deleteListing(match.params.id)
             .then(history.push(`/user/${user.uid}/listings`))
-            .catch(console.log) //TODO
+            .catch(err => history.push('/error'));
     }
 
     if (!user) return <Redirect to="/" />
@@ -32,7 +33,7 @@ const DeleteListing = ({ match }) => {
     return (
         <main className="delete-listing-main">
             <article className="delete-picture-container">
-                <img className="delete-picture" src="https://lh3.googleusercontent.com/proxy/EENcMVZhyq6u3FR7B-mAanqUPwP-6JTSHwRWETAPrYuW5xRWsuIJpeFcI294Ql2JlOIz4gPSjAsXj4Zzlcy8z5nBGdbdqMnznIgORBd7COzWspvEhE11Vd9nRZIeGX5W8dT93g" alt="delete picture" />
+                <img className="delete-picture" src="https://lh3.googleusercontent.com/proxy/EENcMVZhyq6u3FR7B-mAanqUPwP-6JTSHwRWETAPrYuW5xRWsuIJpeFcI294Ql2JlOIz4gPSjAsXj4Zzlcy8z5nBGdbdqMnznIgORBd7COzWspvEhE11Vd9nRZIeGX5W8dT93g" alt="" />
             </article>
             <section className="delete-info-container">
                 <h3>{listing.title}</h3>

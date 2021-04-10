@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 
 import * as listingService from '../../services/listingService';
 import * as userService from '../../services/userService';
@@ -12,6 +12,7 @@ const UserAllListings = ({ match }) => {
 
     const { user } = useContext(AuthContext);
     const userId = match.params.userId;
+    const history = useHistory();
 
     const [userInfo, setUserInfo] = useState({});
     const [userListings, setUserListings] = useState({});
@@ -26,13 +27,13 @@ const UserAllListings = ({ match }) => {
                 setTitle('yes');
             setUserListings(res);
         })
-        .catch(console.log); // TODO
+        .catch(err => history.push('/error'));
     }
 
     useEffect(() => {
         userService.getUserDetailsById(userId)
             .then(setUserInfo)
-            .catch(console.log); // TODO
+            .catch(err => history.push('/error'));
         updateListings();
         setTimeout(updateListings, 1000);
             // eslint-disable-next-line react-hooks/exhaustive-deps

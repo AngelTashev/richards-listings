@@ -12,6 +12,7 @@ const UserListing = ({ userListing, canModify }) => {
                 {Number(userListing.price) > 0 &&
                     <p>${userListing.price}</p>
                 }
+                <p>Likes: {userListing.likes}</p>
             </div>
             <div className="user-listing-info">
                 <button className="user-listing-button"><Link to={`/listings/${userListing.id}`}>View</Link></button>

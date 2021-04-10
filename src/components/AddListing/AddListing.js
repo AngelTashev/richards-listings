@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { Redirect } from 'react-router';
+import { Redirect } from 'react-router-dom';
 
 import * as listingService from '../../services/listingService';
 
@@ -70,7 +70,7 @@ class AddListing extends Component {
                 image: this.state.selectedFile,
             })
             .then(this.props.history.push('/'))
-            .catch(console.log); // TODO
+            .catch(err => this.props.history.push('/error'));
         }
     }
 

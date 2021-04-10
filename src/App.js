@@ -16,6 +16,7 @@ import EditListing from './components/EditListing';
 import AboutUs from './components/AboutUs';
 import UserAllListings from './components/UserAllListings';
 import DeleteListing from './components/DeleteListing';
+import Error from './components/Error';
 
 import AuthContext from './components/AuthContext';
 
@@ -54,6 +55,7 @@ function App() {
           <Route path="/user" component={UserDetails} exact />
           <Route path="/user/:userId/listings" component={UserAllListings}/>
           <Route path="/about-us" component={AboutUs} />
+          <Route path="/error" component={Error} />
           <Route path="/logout" render={() => {
             firebase.auth().signOut();
             setLoggedUser(null);

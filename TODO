@@ -36,7 +36,8 @@ add show listings by category +
 
 add user picture to userListings
 add user picture to listingDetails
-add non-user userDetails page
+
+add likes to user listings page
 
 add non-user UserAllListings page +++
 add no listings message to AllUserListings +++

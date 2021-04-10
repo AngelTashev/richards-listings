@@ -31,7 +31,7 @@ const EditListing = ({ match }) => {
                 setPrice(res.price);
                 return res;
             });
-    }, []);
+    }, [match.params.id]);
 
     const onFormSubmit = (e) => {
         e.preventDefault();
@@ -118,7 +118,7 @@ const EditListing = ({ match }) => {
                     <label className="listing-form-label" htmlFor="image">Choose an image...</label>
                     <input onChange={onFileChangeHandler} type="file" name="image" id="image" className="listing-form-file"></input>
 
-                    <button type="submit" className="listing-form-button" id="add-listing-button">Add!</button>
+                    <button type="submit" className="listing-form-button" id="add-listing-button">Publish!</button>
 
                 </form>
             </section>

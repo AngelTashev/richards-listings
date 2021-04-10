@@ -18,5 +18,4 @@ export const uploadFile = (file) => {
     return fetch(cloudinaryURL, options)
         .then(res => res.json())
         .then(res => res.secure_url)
-        .catch(err => console.log(err)); //TODO
 }

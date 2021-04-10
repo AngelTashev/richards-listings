@@ -10,10 +10,10 @@ import AuthContext from '../AuthContext';
 
 class ListingDetails extends Component {
 
-    constructor(match) {
-        super(match);
+    constructor(props) {
+        super(props);
 
-        this.state = { match: match.match, listing: {}, username: '', userId: '', likes: 0 };
+        this.state = { match: props.match, listing: {}, username: '', userId: '', likes: 0 };
         this.likeListing = this.likeListing.bind(this);
     }
 
@@ -23,15 +23,15 @@ class ListingDetails extends Component {
 
                 userService.getUserDetailsById(listingRes.userId)
                     .then(userRes => this.setState({ listing: listingRes, username: userRes.username, userId: listingRes.userId, likes: listingRes.likes }))
-                    .catch(console.log); //TODO
+                    .catch(err => this.props.history.push('/error'));
             })
-            .catch(console.log); //TODO
+            .catch(err => this.props.history.push('/error' + err));
     }
 
     likeListing() {
         listingService.updateListingLikes(this.state.match.params.id, this.state.likes + 1)
             .then(this.setState({ likes: this.state.likes + 1}))
-            .catch(console.log); // TODO
+            .catch(err => this.props.history.push('/error'));
     }
 
     render() {
