@@ -13,75 +13,77 @@ function UserDetails() {
 
     const history = useHistory();
 
-    const [userDetails, setUserDetails] = useState({ fullName: '', username: '', profilePicUrl: ''})
+    const [userDetails, setUserDetails] = useState({ fullName: '', username: '', profilePicUrl: '' })
     const [userListings, setUserListings] = useState({});
     const [selectedFile, setSelectedFile] = useState(null);
     const [error, setError] = useState('');
 
-    const updateUserDetails = () => {
-        userService.getUserDetailsById(user.uid)
-        .then(setUserDetails)
-        .catch(err => history.push('/error'));
-    }
-
     useEffect(() => {
         if (user) {
-            updateUserDetails();
+            userService.getUserDetailsById(user.uid)
+                .then(setUserDetails)
+                .catch(err => history.push('/error'));
             listingService.getAllByUserId(user.uid)
                 .then(setUserListings)
                 .catch(err => history.push('/error'));
             setError('');
-            setTimeout(updateUserDetails, 1000);
-        }
-    }, [user, history, updateUserDetails]);
+            setTimeout(() =>
+                userService.getUserDetailsById(user.uid)
+                    .then(setUserDetails)
+                    .catch(err => history.push('/error'))
+            , 1000);
+}
+        // eslint-disable-next-line react-hooks/exhaustive-deps
 
-    if (!user) return <Redirect to="/" />
+    }, [user, history]);
 
-    const onFileChangeHandler = (e) => {
-        setSelectedFile(e.target.files[0]);
-    }
+if (!user) return <Redirect to="/" />
 
-    const onFormSubmit = (e) => {
-        e.preventDefault();
+const onFileChangeHandler = (e) => {
+    setSelectedFile(e.target.files[0]);
+}
 
-        userService.uploadProfilePicture(user.uid, selectedFile)
-            .then(history.push('/'))
-            .catch(err => setError(err.message));
-    }
+const onFormSubmit = (e) => {
+    e.preventDefault();
 
-    return (
-        <main className="user-details-main">
-            <section className="user-picture-name-section">
-                <article className="user-details-picture-container">
-                    <img className="user-details-picture" src={userDetails.profilePicUrl ? userDetails.profilePicUrl : "https://genslerzudansdentistry.com/wp-content/uploads/2015/11/anonymous-user.png"} alt="" />
+    userService.uploadProfilePicture(user.uid, selectedFile)
+        .then(history.push('/'))
+        .catch(err => setError(err.message));
+}
+
+return (
+    <main className="user-details-main">
+        <section className="user-picture-name-section">
+            <article className="user-details-picture-container">
+                <img className="user-details-picture" src={userDetails.profilePicUrl ? userDetails.profilePicUrl : "https://genslerzudansdentistry.com/wp-content/uploads/2015/11/anonymous-user.png"} alt="" />
+            </article>
+            <form className="listing-form" onSubmit={onFormSubmit}>
+
+                <ErrorMessage>{error}</ErrorMessage>
+                <label className="listing-form-label" htmlFor="image">Choose an image...</label>
+                <input onChange={onFileChangeHandler} type="file" name="image" id="image" className="listing-form-file"></input>
+                <button type="submit" className="photo-form-button" id="add-listing-button">Change Photo</button>
+
+            </form>
+            <article className="user-name-container">
+                <h1 className="user-name-fullname">{userDetails.fullName}</h1>
+                <p className="user-name-username">{userDetails.username}</p>
+                <button className="photo-form-button"><Link to="/logout">Logout</Link></button>
+            </article>
+        </section>
+        <section className="user-details-section">
+            <article className="user-details">
+                <article className="user-details-listings-container">
+                    <h1>Current Listings: {Object.keys(userListings).length}</h1>
+                    <button><Link to={`/user/${user.uid}/listings`}>See All</Link></button>
                 </article>
-                <form className="listing-form" onSubmit={onFormSubmit}>
-
-                    <ErrorMessage>{error}</ErrorMessage>
-                    <label className="listing-form-label" htmlFor="image">Choose an image...</label>
-                    <input onChange={onFileChangeHandler} type="file" name="image" id="image" className="listing-form-file"></input>
-                    <button type="submit" className="photo-form-button" id="add-listing-button">Change Photo</button>
-
-                </form>
-                <article className="user-name-container">
-                    <h1 className="user-name-fullname">{userDetails.fullName}</h1>
-                    <p className="user-name-username">{userDetails.username}</p>
-                    <button className="photo-form-button"><Link to="/logout">Logout</Link></button>
-                </article>
-            </section>
-            <section className="user-details-section">
-                <article className="user-details">
-                    <article className="user-details-listings-container">
-                        <h1>Current Listings: {Object.keys(userListings).length}</h1>
-                        <button><Link to={`/user/${user.uid}/listings`}>See All</Link></button>
-                    </article>
-                    <h1>Likes: {Object.keys(userListings)
-                                    .reduce((acc, key) => acc + userListings[key].likes, 0)}
-                    </h1>
-                </article>
-            </section>
-        </main>
-    );
+                <h1>Likes: {Object.keys(userListings)
+                    .reduce((acc, key) => acc + userListings[key].likes, 0)}
+                </h1>
+            </article>
+        </section>
+    </main>
+);
 }
 
 export default UserDetails;

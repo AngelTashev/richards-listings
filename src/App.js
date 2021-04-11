@@ -17,6 +17,7 @@ import AboutUs from './components/AboutUs';
 import UserAllListings from './components/UserAllListings';
 import DeleteListing from './components/DeleteListing';
 import Error from './components/Error';
+import CatchErrorBoundary from './components/CatchErrorBoundary';
 
 import AuthContext from './components/AuthContext';
 
@@ -37,40 +38,42 @@ function App() {
 
         <Header logo={logo}></Header>
 
-        <Switch>
-          {/* Home pages */}
-          {loggedUser &&
-            <Route path="/" component={AllListings} exact />
-          }
-          {!loggedUser &&
-            <Route path="/" component={AnonymousLanding} exact />
-          }
+        <CatchErrorBoundary>
+          <Switch>
+            {/* Home pages */}
+            {loggedUser &&
+              <Route path="/" component={AllListings} exact />
+            }
+            {!loggedUser &&
+              <Route path="/" component={AnonymousLanding} exact />
+            }
 
-          {/* Listings */}
-          <Route path="/add-listing" component={AddListing} />
-          <Route path="/category/:category" component={AllListings} exact />
-          <Route path="/listings/:id" component={ListingDetails} exact />
-          <Route path="/listings/:id/edit" component={EditListing} exact />
-          <Route path="/listings/:id/delete" component={DeleteListing} exact />
+            {/* Listings */}
+            <Route path="/add-listing" component={AddListing} />
+            <Route path="/category/:category" component={AllListings} exact />
+            <Route path="/listings/:id" component={ListingDetails} exact />
+            <Route path="/listings/:id/edit" component={EditListing} exact />
+            <Route path="/listings/:id/delete" component={DeleteListing} exact />
 
-          {/* User */}
-          <Route path="/user" component={UserDetails} exact />
-          <Route path="/user/:userId/listings" component={UserAllListings}/>
+            {/* User */}
+            <Route path="/user" component={UserDetails} exact />
+            <Route path="/user/:userId/listings" component={UserAllListings} />
 
-          {/* Other */}
-          <Route path="/about-us" component={AboutUs} />
-          <Route path="/error" component={Error} />
+            {/* Other */}
+            <Route path="/about-us" component={AboutUs} />
+            <Route path="/error" component={Error} />
 
-          {/* Authentication */}
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
-          <Route path="/logout" render={() => {
-            firebase.auth().signOut();
-            setLoggedUser(null);
-            return <Redirect to='/' />
-          }} />
+            {/* Authentication */}
+            <Route path="/register" component={Register} />
+            <Route path="/login" component={Login} />
+            <Route path="/logout" render={() => {
+              firebase.auth().signOut();
+              setLoggedUser(null);
+              return <Redirect to='/' />
+            }} />
 
-        </Switch>
+          </Switch>
+        </CatchErrorBoundary>
 
         <Footer></Footer>
       </AuthContext.Provider>
