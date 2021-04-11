@@ -33,7 +33,7 @@ function UserDetails() {
             setError('');
             setTimeout(updateUserDetails, 1000);
         }
-    }, [user, history]);
+    }, [user, history, updateUserDetails]);
 
     if (!user) return <Redirect to="/" />
 
