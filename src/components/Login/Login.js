@@ -9,7 +9,11 @@ function Login() {
 
     const history = useHistory();
 
-    const [errors, setErrors] = useState({ username: '', password: '', auth: '' });
+    const [errors, setErrors] = useState
+        ({  username: '', 
+            password: '', 
+            auth: ''
+        });
 
     const onFormSubmit = (e) => {
 

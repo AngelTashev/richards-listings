@@ -68,7 +68,7 @@ function Register() {
             .then(res => {
                 history.push('/');
             })
-            .catch(err => setErrors({...errors, auth: err}));
+            .catch(err => setErrors({...errors, auth: err.message}));
         }
     }
 

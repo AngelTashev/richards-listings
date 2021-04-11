@@ -29,8 +29,8 @@ getOne +++
 
 ! errorHandling +++
 
-? add show listings by category ++
-
+fix registration errors +++
+add show listings by category +++
 add user picture to userListings +++
 add user picture to listingDetails +++
 add likes to user listings page+++
