@@ -2,13 +2,14 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCWMxIbL6Bv9mSKJiqvGga9O8qLARH89jo",
-    authDomain: "react-my-pets-c7449.firebaseapp.com",
-    projectId: "react-my-pets-c7449",
-    storageBucket: "react-my-pets-c7449.appspot.com",
-    messagingSenderId: "344492305255",
-    appId: "1:344492305255:web:343886a70481d3e0efddc2"
-};
+    apiKey: "AIzaSyCh68LTPp6Ck40Kdtlt5EOgpgmX4I1FW24",
+    authDomain: "richards-listings.firebaseapp.com",
+    databaseURL: "https://richards-listings-default-rtdb.firebaseio.com",
+    projectId: "richards-listings",
+    storageBucket: "richards-listings.appspot.com",
+    messagingSenderId: "322805675490",
+    appId: "1:322805675490:web:5f41987cd06bf9fe61f5bb"
+  };
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);

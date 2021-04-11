@@ -79,23 +79,23 @@ function Register() {
             <section className="login-form-container">
                 <form className="login-form" onSubmit={onFormSubmit}>
 
-                    <label class="login-label" for="fullName">Full Name</label>
+                    <label className="login-label" htmlFor="fullName">Full Name</label>
                     <input onChange={onNameChangeHandler} required placeholder="Full Name" type="text" name="fullName" id="fullName" className="login-text-input" />
                     <ErrorMessage>{errors.fullName}</ErrorMessage>
 
-                    <label class="login-label" for="username">Username</label>
+                    <label className="login-label" htmlFor="username">Username</label>
                     <input onChange={onUsernameChangeHandler} required placeholder="Username" type="text" name="username" id="username" className="login-text-input" />
                     <ErrorMessage>{errors.username}</ErrorMessage>
 
-                    <label class="login-label" for="email">Email</label>
+                    <label className="login-label" htmlFor="email">Email</label>
                     <input onChange={onEmailChangeHandler} required placeholder="user@example.com" type="email" name="email" id="email" className="login-text-input" />
                     <ErrorMessage>{errors.email}</ErrorMessage>
 
-                    <label class="login-label" for="password">Password</label>
+                    <label className="login-label" htmlFor="password">Password</label>
                     <input onChange={onPasswordChangeHandler} required placeholder="Password" type="password" name="password" id="password" className="login-text-input" />
                     <ErrorMessage>{errors.password}</ErrorMessage>
 
-                    <label class="login-label" for="repeat-password">Repeat Password</label>
+                    <label className="login-label" htmlFor="repeat-password">Repeat Password</label>
                     <input onChange={onPasswordRepeatChangeHandler} required placeholder="Repeat Password" type="password" name="repeat-password" id="repeat-password" className="login-text-input" />
                     <ErrorMessage>{errors.repeatPassword}</ErrorMessage>
 

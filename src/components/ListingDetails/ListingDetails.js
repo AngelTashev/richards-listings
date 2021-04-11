@@ -25,7 +25,7 @@ class ListingDetails extends Component {
                     .then(userRes => this.setState({ listing: listingRes, username: userRes.username, profilePicUrl: userRes.profilePicUrl, userId: listingRes.userId, likes: listingRes.likes }))
                     .catch(err => this.props.history.push('/error'));
             })
-            .catch(err => this.props.history.push('/error' + err));
+            .catch(err => this.props.history.push('/error'));
     }
 
     likeListing() {

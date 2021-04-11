@@ -45,10 +45,10 @@ function App() {
           {!loggedUser &&
             <Route path="/" component={AnonymousLanding} exact />
           }
-          {/* <Route path="/listings/:category" component={AllListings} exact /> */}
 
           {/* Listings */}
           <Route path="/add-listing" component={AddListing} />
+          <Route path="/category/:category" component={AllListings} exact />
           <Route path="/listings/:id" component={ListingDetails} exact />
           <Route path="/listings/:id/edit" component={EditListing} exact />
           <Route path="/listings/:id/delete" component={DeleteListing} exact />
@@ -74,7 +74,7 @@ function App() {
 
         <Footer></Footer>
       </AuthContext.Provider>
-      
+
     </div>
   );
 }

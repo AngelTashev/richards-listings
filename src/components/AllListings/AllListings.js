@@ -1,7 +1,7 @@
 import style from './AllListings.module.css';
 
 import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 import * as listingService from '../../services/listingService';
 
@@ -17,7 +17,7 @@ const AllListings = ({
     let [title, setTitle] = useState('Loading...');
     
     const updateListings = () => {
-        listingService.getAll()
+        listingService.getAll(match.params.category)
         .then(res => {
             setListings(res);
             setTitle('All Listings');
@@ -27,7 +27,7 @@ const AllListings = ({
 
     useEffect(() => {
         updateListings();
-        setTimeout(updateListings, 1000);
+        setTimeout(updateListings, 2000);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [match.params.category]);
 
@@ -35,6 +35,13 @@ const AllListings = ({
     return (<main className={style.allListingsMain}>
         <article className={style.allListingsTitleContainer}>
             <h1 className={style.allListingsTitle}>{title}</h1>
+        </article>
+        <article>
+            <button className={style.categoryButton}><NavLink activeClassName={style.activeLink} to="/">All</NavLink></button>
+            <button className={style.categoryButton}><NavLink activeClassName={style.activeLink} to="/category/house">House</NavLink></button>
+            <button className={style.categoryButton}><NavLink activeClassName={style.activeLink} to="/category/cars">Cars</NavLink></button>
+            <button className={style.categoryButton}><NavLink activeClassName={style.activeLink} to="/category/tech">Tech</NavLink></button>
+            <button className={style.categoryButton}><NavLink activeClassName={style.activeLink} to="/category/Other">Other</NavLink></button>
         </article>
         <section className={style.allListingsSection}>
 

@@ -16,3 +16,22 @@
     margin-bottom: 150px;
     justify-content: flex-start;
 }
+
+.categoryButton {
+    background: #FFBC42;
+    width: 60px;
+    height: 30px;
+    border: 1px solid #000;
+    border-radius: 20px;
+    margin: 0px 5px;
+    outline: none;
+}
+
+.categoryButton a {
+    color: #000;
+    text-decoration: none;
+}
+
+.activeLink {
+    font-weight: 700;
+}

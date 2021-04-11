@@ -13,6 +13,10 @@ If you are not authenticated, you can come to the anonymous home page and login 
 
 If you are authenticated, you will be welcomed by the All Listings page.
 
+### `/category/:category`
+
+Filter the listings and show only by the selected category.
+
 ### `/login`
 
 This page allows you to log into your profile.
@@ -44,17 +48,17 @@ From here you can create a listing, by giving it an eye-catching title and descr
 
 Choose the photo of the listing carefuly! It is very imporant! (Although you are not obliged to upload a photo :) )
 
-### `/listings/id`
+### `/listings/:id`
 
 You can view your own, or someone else's listings on this path, given you have the right id.
 
 From here you can also like their listings! :)
 
-### `/listings/id/edit`
+### `/listings/:id/edit`
 
 If you do not like the look, picture or price of your listing, here you can change that.
 
-### `/listings/id/delete`
+### `/listings/:id/delete`
 
 Be careful with this one! 
 

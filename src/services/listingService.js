@@ -5,10 +5,7 @@ const baseUrl = 'https://richards-listings-default-rtdb.firebaseio.com/listings/
 export const getAll = (category = '') => {
 
     return fetch(baseUrl + '.json')
-        .then(res => {
-            res = res.json();
-            return res;
-        })
+        .then(res => res.json())
         .then(res => category === '' ? res : filterListings(res, 'category', category))
         .then(res => sortListings(res));
 }
